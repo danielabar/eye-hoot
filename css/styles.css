@@ -1,3 +1,7 @@
+.owl {
+  transform: translateX(70px);
+}
+
 .eyes.side-to-side {
   animation: side-to-side 1s ease 0s alternate infinite;
 }
@@ -16,4 +20,20 @@
 
 .eyes.around {
   animation: rot 2s linear 0s normal infinite;
+}
+
+.left-wing {
+  transform-origin: right top;
+}
+
+.left-wing.flap-left {
+  animation: flap-left 0.5s ease 0s alternate infinite;
+}
+
+.right-wing {
+  transform-origin: left top;
+}
+
+.right-wing.flap-right {
+  animation: flap-right 0.5s ease 0s alternate infinite;
 }

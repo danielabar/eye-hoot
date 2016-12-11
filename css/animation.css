@@ -38,3 +38,21 @@
 		           rotate(-360deg);
 	}
 }
+
+@keyframes flap-left {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(25deg);
+  }
+}
+
+@keyframes flap-right {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-25deg);
+  }
+}
