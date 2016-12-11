@@ -65,3 +65,12 @@
     transform: rotateX(60deg);
   }
 }
+
+@keyframes shrink {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0.1);
+  }
+}

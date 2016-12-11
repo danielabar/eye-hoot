@@ -23,6 +23,11 @@
   animation: rot 2s linear 0s normal infinite;
 }
 
+.eyes.blink {
+  transform-origin: 50%;
+  animation: shrink 0.5s ease 0s alternate infinite;
+}
+
 .left-wing {
   transform-origin: right top;
 }
