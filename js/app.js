@@ -1,31 +1,65 @@
 (function() {
   'use strict';
 
-  var start = function() {
+  var sideToSideButton;
+  var upDownButton;
+  var aroundButton;
+  var blinkButton;
+  var takeABreakButton;
 
-    document.querySelector('.side-to-side').addEventListener('click', function(evt) {
-      document.querySelector('.eyes').classList.toggle('side-to-side');
-      document.querySelector('.left-eye-shine').classList.toggle('side-to-side');
-      document.querySelector('.right-eye-shine').classList.toggle('side-to-side');
+  var eyes;
+  var leftEyeShine;
+  var rightEyeShine;
+  var leftWing;
+  var rightWing;
+  var leftFoot;
+  var rightFoot;
+
+  var start = function(evt) {
+    findElements();
+    registerEvents();
+  };
+
+  var findElements = function() {
+    sideToSideButton = document.querySelector('.side-to-side');
+    upDownButton = document.querySelector('.up-down');
+    aroundButton = document.querySelector('.around');
+    blinkButton = document.querySelector('.blink');
+    takeABreakButton = document.querySelector('.take-a-break');
+
+    eyes = document.querySelector('.eyes');
+    leftEyeShine = document.querySelector('.left-eye-shine');
+    rightEyeShine = document.querySelector('.right-eye-shine');
+    leftWing = document.querySelector('.left-wing');
+    rightWing = document.querySelector('.right-wing');
+    leftFoot = document.querySelector('.left-foot');
+    rightFoot = document.querySelector('.right-foot');
+  };
+
+  var registerEvents = function() {
+    sideToSideButton.addEventListener('click', function(evt) {
+      eyes.classList.toggle('side-to-side');
+      leftEyeShine.classList.toggle('side-to-side');
+      rightEyeShine.classList.toggle('side-to-side');
     });
 
-    document.querySelector('.up-down').addEventListener('click', function(evt) {
-      document.querySelector('.eyes').classList.toggle('up-down');
-      document.querySelector('.left-eye-shine').classList.toggle('up-down');
-      document.querySelector('.right-eye-shine').classList.toggle('up-down');
+    upDownButton.addEventListener('click', function(evt) {
+      eyes.classList.toggle('up-down');
+      leftEyeShine.classList.toggle('up-down');
+      rightEyeShine.classList.toggle('up-down');
     });
 
-    document.querySelector('.around').addEventListener('click', function(evt) {
-      document.querySelector('.eyes').classList.toggle('around');
-      document.querySelector('.left-eye-shine').classList.toggle('around');
-      document.querySelector('.right-eye-shine').classList.toggle('around');
+    aroundButton.addEventListener('click', function(evt) {
+      eyes.classList.toggle('around');
+      leftEyeShine.classList.toggle('around');
+      rightEyeShine.classList.toggle('around');
     });
 
-    document.querySelector('.blink').addEventListener('click', function(evt) {
-      document.querySelector('.eyes').classList.toggle('blink');
+    blinkButton.addEventListener('click', function(evt) {
+      eyes.classList.toggle('blink');
     });
 
-    document.querySelector('.take-a-break').addEventListener('click', function(evt) {
+    takeABreakButton.addEventListener('click', function(evt) {
       document.querySelector('.left-wing').classList.toggle('flap-left');
       document.querySelector('.right-wing').classList.toggle('flap-right');
       document.querySelector('.right-foot').classList.toggle('march');
@@ -33,7 +67,5 @@
     });
   };
 
-  document.addEventListener('DOMContentLoaded', function(evt) {
-    start();
-  });
+  document.addEventListener('DOMContentLoaded', start);
 }());
