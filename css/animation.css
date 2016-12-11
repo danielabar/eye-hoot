@@ -7,6 +7,15 @@
   }
 }
 
+@keyframes side-to-side-small {
+  0% {
+    transform: translateX(-35%);
+  }
+  100% {
+    transform: translateX(35%);
+  }
+}
+
 @keyframes up-down {
   0% {
     transform: translateY(-50%);
