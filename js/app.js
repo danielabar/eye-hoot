@@ -20,6 +20,8 @@
     document.querySelector('.take-a-break').addEventListener('click', function(evt) {
       document.querySelector('.left-wing').classList.toggle('flap-left');
       document.querySelector('.right-wing').classList.toggle('flap-right');
+      document.querySelector('.right-foot').classList.toggle('march');
+      document.querySelector('.left-foot').classList.toggle('march');
     });
   };
 

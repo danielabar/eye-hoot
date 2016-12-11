@@ -1,4 +1,5 @@
 .owl {
+  perspective: 100px;
   transform: translateX(70px);
 }
 
@@ -36,4 +37,16 @@
 
 .right-wing.flap-right {
   animation: flap-right 0.5s ease 0s alternate infinite;
+}
+
+.foot {
+  transform-origin: center top;
+}
+
+.right-foot.march {
+  animation: march 0.75s ease 0s alternate infinite;
+}
+
+.left-foot.march {
+  animation: march 0.75s ease 0.75s alternate infinite;
 }
