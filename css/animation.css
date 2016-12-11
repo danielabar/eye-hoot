@@ -1,8 +1,17 @@
-@keyframes sidetoside {
+@keyframes side-to-side {
   0% {
     transform: translateX(-10%);
   }
   100% {
     transform: translateX(10%);
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(50%);
   }
 }

@@ -1,3 +1,7 @@
-.eyes.animated {
-  animation: sidetoside 1s ease alternate infinite;
+.eyes.side-to-side {
+  animation: side-to-side 1s ease alternate infinite;
+}
+
+.eyes.up-down {
+  animation: up-down 1s ease alternate infinite;
 }
