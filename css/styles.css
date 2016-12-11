@@ -13,3 +13,7 @@
 .right-eye-shine.side-to-side {
   animation: side-to-side-small 1s ease 0s alternate infinite;
 }
+
+.eyes.around {
+  animation: rot 2s linear 0s normal infinite;
+}

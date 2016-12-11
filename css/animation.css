@@ -24,3 +24,17 @@
     transform: translateY(50%);
   }
 }
+
+/* https://gist.github.com/LeaVerou/1760283/593fa8bf024ccdddf2fe67826aece0b420c9d60e */
+@keyframes rot {
+	from {
+		transform: rotate(0deg)
+		           translate(-5%)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-5%)
+		           rotate(-360deg);
+	}
+}
