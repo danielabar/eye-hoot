@@ -7,10 +7,6 @@
   animation: side-to-side 1s ease 0s alternate infinite;
 }
 
-.eyes.up-down {
-  animation: up-down 1s ease 0s alternate infinite;
-}
-
 .left-eye-shine.side-to-side {
   animation: side-to-side-small 1s ease 0s alternate infinite;
 }
@@ -19,8 +15,28 @@
   animation: side-to-side-small 1s ease 0s alternate infinite;
 }
 
+.eyes.up-down {
+  animation: up-down 1s ease 0s alternate infinite;
+}
+
+.left-eye-shine.up-down {
+  animation: up-down-small 1s ease 0s alternate infinite;
+}
+
+.right-eye-shine.up-down {
+  animation: up-down-small 1s ease 0s alternate infinite;
+}
+
 .eyes.around {
   animation: rot 2s linear 0s normal infinite;
+}
+
+.left-eye-shine.around {
+  animation: rot-small 2s linear 0s normal infinite;
+}
+
+.right-eye-shine.around {
+  animation: rot-small 2s linear 0s normal infinite;
 }
 
 .eyes.blink {

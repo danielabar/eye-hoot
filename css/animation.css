@@ -9,10 +9,10 @@
 
 @keyframes side-to-side-small {
   0% {
-    transform: translateX(-35%);
+    transform: translateX(-100%);
   }
   100% {
-    transform: translateX(35%);
+    transform: translateX(60%);
   }
 }
 
@@ -25,16 +25,38 @@
   }
 }
 
+@keyframes up-down-small {
+  0% {
+    transform: translateY(-70%);
+  }
+  100% {
+    transform: translateY(70%);
+  }
+}
+
 /* https://gist.github.com/LeaVerou/1760283/593fa8bf024ccdddf2fe67826aece0b420c9d60e */
 @keyframes rot {
-	from {
+	0% {
 		transform: rotate(0deg)
 		           translate(-5%)
 		           rotate(0deg);
 	}
-	to {
+	100% {
 		transform: rotate(360deg)
 		           translate(-5%)
+		           rotate(-360deg);
+	}
+}
+
+@keyframes rot-small {
+	0% {
+		transform: rotate(0deg)
+		           translate(-30%)
+		           rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg)
+		           translate(-30%)
 		           rotate(-360deg);
 	}
 }

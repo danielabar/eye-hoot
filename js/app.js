@@ -11,10 +11,14 @@
 
     document.querySelector('.up-down').addEventListener('click', function(evt) {
       document.querySelector('.eyes').classList.toggle('up-down');
+      document.querySelector('.left-eye-shine').classList.toggle('up-down');
+      document.querySelector('.right-eye-shine').classList.toggle('up-down');
     });
 
     document.querySelector('.around').addEventListener('click', function(evt) {
       document.querySelector('.eyes').classList.toggle('around');
+      document.querySelector('.left-eye-shine').classList.toggle('around');
+      document.querySelector('.right-eye-shine').classList.toggle('around');
     });
 
     document.querySelector('.blink').addEventListener('click', function(evt) {
