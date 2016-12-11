@@ -7,6 +7,7 @@
   var blinkButton;
   var takeABreakButton;
 
+  var owlGraphic;
   var eyes;
   var leftEyeShine;
   var rightEyeShine;
@@ -27,6 +28,7 @@
     blinkButton = document.querySelector('.blink');
     takeABreakButton = document.querySelector('.take-a-break');
 
+    owlGraphic = document.querySelector('.owl-graphic');
     eyes = document.querySelector('.eyes');
     leftEyeShine = document.querySelector('.left-eye-shine');
     rightEyeShine = document.querySelector('.right-eye-shine');
@@ -60,10 +62,11 @@
     });
 
     takeABreakButton.addEventListener('click', function(evt) {
-      document.querySelector('.left-wing').classList.toggle('flap-left');
-      document.querySelector('.right-wing').classList.toggle('flap-right');
-      document.querySelector('.right-foot').classList.toggle('march');
-      document.querySelector('.left-foot').classList.toggle('march');
+      owlGraphic.classList.toggle('wobble');
+      leftWing.classList.toggle('flap-left');
+      rightWing.classList.toggle('flap-right');
+      rightFoot.classList.toggle('march');
+      leftFoot.classList.toggle('march');
     });
   };
 

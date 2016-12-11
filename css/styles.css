@@ -1,6 +1,14 @@
-.owl {
+.owl-container {
   perspective: 100px;
   transform: translateX(70px);
+}
+
+.owl-graphic {
+  transform-origin: center bottom;
+}
+
+.owl-graphic.wobble {
+  animation: wobble 0.75s linear 0.5s alternate infinite;
 }
 
 .eyes.side-to-side {
