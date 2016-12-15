@@ -86,16 +86,18 @@ svg {
   transform-origin: right top;
 }
 
+/* http://easings.net/#easeOutCubic */
 .left-wing.flap-left {
-  animation: flap-left 0.5s ease 0s alternate infinite;
+  animation: flap-left 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0s alternate infinite;
 }
 
 .right-wing {
   transform-origin: left top;
 }
 
+/* http://easings.net/#easeOutCubic */
 .right-wing.flap-right {
-  animation: flap-right 0.5s ease 0s alternate infinite;
+  animation: flap-right 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0s alternate infinite;
 }
 
 .foot {
