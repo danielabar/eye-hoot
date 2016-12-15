@@ -7,12 +7,30 @@
   }
 }
 
+@keyframes to-side {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-10%);
+  }
+}
+
 @keyframes side-to-side {
   0% {
     transform: translateX(-10%);
   }
   100% {
     transform: translateX(10%);
+  }
+}
+
+@keyframes to-side-small {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
 

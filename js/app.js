@@ -1,6 +1,7 @@
 (function() {
   'use strict';
 
+  var testButton;
   var sideToSideButton;
   var upDownButton;
   var aroundButton;
@@ -22,6 +23,7 @@
   };
 
   var findElements = function() {
+    testButton = document.querySelector('.test');
     sideToSideButton = document.querySelector('.side-to-side');
     upDownButton = document.querySelector('.up-down');
     aroundButton = document.querySelector('.around');
@@ -39,6 +41,10 @@
   };
 
   var registerEvents = function() {
+    testButton.addEventListener('click', function(evt) {
+      eyes.classList.toggle('to-side');
+    });
+
     sideToSideButton.addEventListener('click', function(evt) {
       eyes.classList.toggle('side-to-side');
       leftEyeShine.classList.toggle('side-to-side');

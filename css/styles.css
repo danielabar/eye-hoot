@@ -42,15 +42,15 @@ svg {
 }
 
 .eyes.side-to-side {
-  animation: side-to-side 1s ease 0s alternate infinite;
+  animation: to-side 0.5s ease, side-to-side 1s ease 0.5s alternate infinite;
 }
 
 .left-eye-shine.side-to-side {
-  animation: side-to-side-small 1s ease 0s alternate infinite;
+  animation: to-side-small 0.5s ease, side-to-side-small 1s ease 0.5s alternate infinite;
 }
 
 .right-eye-shine.side-to-side {
-  animation: side-to-side-small 1s ease 0s alternate infinite;
+  animation: to-side-small 0.5s ease, side-to-side-small 1s ease 0.5s alternate infinite;
 }
 
 .eyes.up-down {
