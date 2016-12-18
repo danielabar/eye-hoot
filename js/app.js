@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  var notifyPermission = false;
+
   var testButton;
   var sideToSideButton;
   var upDownButton;
@@ -20,6 +22,29 @@
   var start = function(evt) {
     findElements();
     registerEvents();
+    requestPermission();
+  };
+
+  var requestPermission = function() {
+    if (window.Notification && Notification.permission !== 'denied') {
+      Notification.requestPermission(function(status) {
+        if (status === 'granted') {
+          notifyPermission = true;
+          // test notification
+          var n = new Notification('Eye break!', {
+            body: 'Move your eyes from side to side.',
+            icon: 'images/owl.png'
+          });
+          n.onclick = function() {
+            window.focus();
+            n.close();
+            eyes.classList.toggle('side-to-side');
+            leftEyeShine.classList.toggle('side-to-side');
+            rightEyeShine.classList.toggle('side-to-side');
+          }
+        }
+      });
+    }
   };
 
   var findElements = function() {
