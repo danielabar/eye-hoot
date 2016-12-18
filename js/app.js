@@ -19,9 +19,9 @@
   var leftFoot;
   var rightFoot;
 
+  var clock;
+
   var start = function(evt) {
-    findElements();
-    registerEvents();
     requestPermission();
   };
 
@@ -30,18 +30,11 @@
       Notification.requestPermission(function(status) {
         if (status === 'granted') {
           notifyPermission = true;
-          // test notification
-          var n = new Notification('Eye break!', {
-            body: 'Move your eyes from side to side.',
-            icon: 'images/owl.png'
-          });
-          n.onclick = function() {
-            window.focus();
-            n.close();
-            eyes.classList.toggle('side-to-side');
-            leftEyeShine.classList.toggle('side-to-side');
-            rightEyeShine.classList.toggle('side-to-side');
-          }
+          findElements();
+          registerEvents();
+          startClock();
+        } else {
+          dpcument.querySelector('.clock').innterHTML = 'Sorry this app does not work without notifications for now.';
         }
       });
     }
@@ -98,6 +91,32 @@
       rightWing.classList.toggle('flap-right');
       rightFoot.classList.toggle('march');
       leftFoot.classList.toggle('march');
+    });
+  };
+
+  var notify = function() {
+    var n = new Notification('Eye break!', {
+      body: 'Move your eyes from side to side.',
+      icon: 'images/owl.png'
+    });
+    n.onclick = function() {
+      window.focus();
+      n.close();
+      eyes.classList.toggle('side-to-side');
+      leftEyeShine.classList.toggle('side-to-side');
+      rightEyeShine.classList.toggle('side-to-side');
+    }
+  };
+
+  var startClock = function() {
+    clock = $('.clock').FlipClock(10, {
+      clockFace: 'MinuteCounter',
+      countdown: true,
+      stop: function() {
+        // notify();
+        // issue this runs multiple times
+        // console.log('countdown reached');
+      }
     });
   };
 
