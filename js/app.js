@@ -109,13 +109,14 @@
   };
 
   var startClock = function() {
+    // short 10sec interval to verify which event for countdown reached
     clock = $('.clock').FlipClock(10, {
       clockFace: 'MinuteCounter',
       countdown: true,
-      stop: function() {
-        // notify();
-        // issue this runs multiple times
-        // console.log('countdown reached');
+      callbacks: {
+        stop: function() {
+          notify();
+        }
       }
     });
   };
