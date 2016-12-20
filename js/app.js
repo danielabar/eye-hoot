@@ -100,17 +100,37 @@
       icon: 'images/owl.png'
     });
     n.onclick = function() {
+      // focus this app
       window.focus();
       n.close();
+
+      // start animation
       eyes.classList.toggle('side-to-side');
       leftEyeShine.classList.toggle('side-to-side');
       rightEyeShine.classList.toggle('side-to-side');
+
+      // set clock for animation interval
+      clock = $('.clock').FlipClock(10, {
+        clockFace: 'MinuteCounter',
+        countdown: true,
+        callbacks: {
+          stop: function() {
+            // turn off animation
+            eyes.classList.toggle('side-to-side');
+            leftEyeShine.classList.toggle('side-to-side');
+            rightEyeShine.classList.toggle('side-to-side');
+
+            // start all over again
+            startClock();
+          }
+        }
+      });
     }
   };
 
   var startClock = function() {
-    // short 10sec interval to verify which event for countdown reached
-    clock = $('.clock').FlipClock(10, {
+    // short interval to verify which event for countdown reached
+    clock = $('.clock').FlipClock(15, {
       clockFace: 'MinuteCounter',
       countdown: true,
       callbacks: {
