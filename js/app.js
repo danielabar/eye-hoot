@@ -58,21 +58,31 @@
     rightFoot = document.querySelector('.right-foot');
   };
 
+  var sideToSide = function() {
+    eyes.classList.toggle('side-to-side');
+    leftEyeShine.classList.toggle('side-to-side');
+    rightEyeShine.classList.toggle('side-to-side');
+  }
+
+  var upDown = function() {
+    eyes.classList.toggle('up-down');
+    leftEyeShine.classList.toggle('up-down');
+    rightEyeShine.classList.toggle('up-down');
+  }
+
+  var ANIMATIONS = [sideToSide, upDown];
+
   var registerEvents = function() {
     testButton.addEventListener('click', function(evt) {
       eyes.classList.toggle('to-side');
     });
 
     sideToSideButton.addEventListener('click', function(evt) {
-      eyes.classList.toggle('side-to-side');
-      leftEyeShine.classList.toggle('side-to-side');
-      rightEyeShine.classList.toggle('side-to-side');
+      sideToSide();
     });
 
     upDownButton.addEventListener('click', function(evt) {
-      eyes.classList.toggle('up-down');
-      leftEyeShine.classList.toggle('up-down');
-      rightEyeShine.classList.toggle('up-down');
+      upDown();
     });
 
     aroundButton.addEventListener('click', function(evt) {
@@ -105,9 +115,7 @@
       n.close();
 
       // start animation
-      eyes.classList.toggle('side-to-side');
-      leftEyeShine.classList.toggle('side-to-side');
-      rightEyeShine.classList.toggle('side-to-side');
+      ANIMATIONS[0].call();
 
       // set clock for animation interval
       clock = $('.clock').FlipClock(10, {
@@ -116,9 +124,7 @@
         callbacks: {
           stop: function() {
             // turn off animation
-            eyes.classList.toggle('side-to-side');
-            leftEyeShine.classList.toggle('side-to-side');
-            rightEyeShine.classList.toggle('side-to-side');
+            ANIMATIONS[0].call();
 
             // start all over again
             startClock();
