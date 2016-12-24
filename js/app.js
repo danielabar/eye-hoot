@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  var notifyPermission = false;
-
   var sideToSideButton;
   var upDownButton;
   var aroundButton;
@@ -31,19 +29,19 @@
   var WORK_MESSAGE = 'Time to work';
 
   var start = function(evt) {
+    findElements();
     requestPermission();
   };
 
   var handleNotificationDenied = function() {
-    document.querySelector('.message').innerHTML = 'Sorry this app does not work without notifications for now.';
+    dimBrighten();
+    document.querySelector('.message').innerHTML = 'Please allow notifications to use Eye Hoot.';
   }
 
   var requestPermission = function() {
     if (window.Notification && Notification.permission !== 'denied') {
       Notification.requestPermission(function(status) {
         if (status === 'granted') {
-          notifyPermission = true;
-          findElements();
           registerEvents();
           startWork();
         } else {
