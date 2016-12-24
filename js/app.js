@@ -25,7 +25,7 @@
   var animationIndex = 0;
   var EYE_ANIMATION_INTERVAL = 10;
   var WORK_INTERVAL = 15; // short for testing
-  var WORK_MESSAGE = 'Time to work...';
+  var WORK_MESSAGE = 'Time to work';
 
   var start = function(evt) {
     requestPermission();
@@ -42,7 +42,7 @@
           notifyPermission = true;
           findElements();
           registerEvents();
-          startWorkClock();
+          startWork();
         } else {
           handleNotificationDenied();
         }
@@ -71,6 +71,10 @@
     rightWing = document.querySelector('.right-wing');
     leftFoot = document.querySelector('.left-foot');
     rightFoot = document.querySelector('.right-foot');
+  };
+
+  var updateMessage = function(message) {
+    messageElement.innerHTML = message;
   };
 
   var sideToSide = function() {
@@ -119,7 +123,7 @@
   var startAnimation = function() {
     dimBrighten();
     EYE_ANIMATIONS[animationIndex]();
-    messageElement.innerHTML = EYE_ANIMATIONS_MESSAGES[animationIndex];
+    updateMessage(EYE_ANIMATIONS_MESSAGES[animationIndex]);
   };
 
   var stopAnimation = function() {
@@ -152,16 +156,20 @@
         callbacks: {
           stop: function() {
             stopAnimation();
-            startWorkClock();
+            startWork();
           }
         }
       });
     }
   };
 
-  var startWorkClock = function() {
-    messageElement.innerHTML = WORK_MESSAGE;
+  var startWork = function() {
+    updateMessage(WORK_MESSAGE);
     dimBrighten();
+    startWorkClock();
+  };
+
+  var startWorkClock = function() {
     clock = $('.clock').FlipClock(WORK_INTERVAL, {
       clockFace: 'MinuteCounter',
       countdown: true,
@@ -171,7 +179,7 @@
         }
       }
     });
-  };
+  }
 
   document.addEventListener('DOMContentLoaded', start);
 }());
