@@ -17,7 +17,10 @@ body {
 .message {
   margin-top: 0.9em;
   font-size: 4em;
-  text-align: center
+  text-align: center;
+  opacity: 1;
+  filter: grayscale(0);
+  transition: opacity 1s linear, filter 1s linear;
 }
 
 /* http://stackoverflow.com/questions/9622354/make-a-div-center-of-viewport-horizontally-and-vertically/34084294#34084294 */

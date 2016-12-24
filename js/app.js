@@ -112,6 +112,7 @@
 
   var dimBrighten = function() {
     owlSvg.classList.toggle('dim');
+    messageElement.classList.toggle('dim');
   }
 
   var EYE_ANIMATIONS = [sideToSide, upDown, around, blinkEyes];
