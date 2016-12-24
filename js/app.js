@@ -190,6 +190,7 @@
       stopBreakAnimation();
       timeElapsed = 0;
     }
+    document.getElementById('breakOver').play();
     startWork();
   }
 
