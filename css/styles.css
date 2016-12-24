@@ -14,12 +14,16 @@ body {
   color: #fff;
 }
 
-.message {
+.clock-container {
   position: absolute;
-  z-index: 1;
-  font-size: 3em;
-  top: 20%;
-  left: 10%;
+  top: 3%;
+  right: 3%;
+}
+
+.message {
+  margin-top: 0.5em;
+  font-size: 4em;
+  text-align: center
 }
 
 /* http://stackoverflow.com/questions/9622354/make-a-div-center-of-viewport-horizontally-and-vertically/34084294#34084294 */
