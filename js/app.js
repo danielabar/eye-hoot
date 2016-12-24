@@ -23,7 +23,7 @@
   var animationIndex = 0;
   var timeElapsed = 0;
   var EYE_ANIMATION_INTERVAL = 10;
-  var BREAK_ANIMATION_INTERVAL = 20; // short for testing
+  var LONG_BREAK_ANIMATION_INTERVAL = 20; // short for testing
   var WORK_INTERVAL = 15; // short for testing
   var TIME_TO_LONG_BREAK = 30; // short for testing
   var WORK_MESSAGE = 'Time to work';
@@ -132,7 +132,7 @@
     animationIndex = (animationIndex === EYE_ANIMATIONS.length - 1) ? 0 : animationIndex + 1;
   };
 
-  var startBreakAnimation = function() {
+  var startLongBreakAnimation = function() {
     dimBrighten();
     longBreak();
     updateMessage('Get up and go for a walk');
@@ -166,8 +166,8 @@
       startAnimation();
       startAnimationClock(EYE_ANIMATION_INTERVAL);
     } else {
-      startBreakAnimation();
-      startAnimationClock(BREAK_ANIMATION_INTERVAL);
+      startLongBreakAnimation();
+      startAnimationClock(LONG_BREAK_ANIMATION_INTERVAL);
     }
   }
 
