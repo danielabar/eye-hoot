@@ -25,6 +25,10 @@
     requestPermission();
   };
 
+  var handleNotificationDenied = function() {
+    document.querySelector('.message').innerHTML = 'Sorry this app does not work without notifications for now.';
+  }
+
   var requestPermission = function() {
     if (window.Notification && Notification.permission !== 'denied') {
       Notification.requestPermission(function(status) {
@@ -34,9 +38,11 @@
           registerEvents();
           startClock();
         } else {
-          dpcument.querySelector('.clock').innterHTML = 'Sorry this app does not work without notifications for now.';
+          handleNotificationDenied();
         }
       });
+    } else {
+      handleNotificationDenied();
     }
   };
 

@@ -9,6 +9,17 @@ body {
 
 body {
   background: #333333;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  color: #fff;
+}
+
+.message {
+  position: absolute;
+  z-index: 1;
+  font-size: 3em;
+  top: 20%;
+  left: 10%;
 }
 
 /* http://stackoverflow.com/questions/9622354/make-a-div-center-of-viewport-horizontally-and-vertically/34084294#34084294 */
