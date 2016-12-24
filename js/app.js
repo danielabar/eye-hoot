@@ -7,7 +7,7 @@
   var upDownButton;
   var aroundButton;
   var blinkButton;
-  var takeABreakButton;
+  var longBreakButton;
   var messageElement;
 
   var owlGraphic;
@@ -60,7 +60,7 @@
     upDownButton = document.querySelector('.up-down');
     aroundButton = document.querySelector('.around');
     blinkButton = document.querySelector('.blink');
-    takeABreakButton = document.querySelector('.take-a-break');
+    longBreakButton = document.querySelector('.take-a-break');
 
     messageElement = document.querySelector('.message');
 
@@ -102,7 +102,7 @@
     eyes.classList.toggle('blink');
   };
 
-  var takeABreak = function() {
+  var longBreak = function() {
     owlGraphic.classList.toggle('wobble');
     leftWing.classList.toggle('flap-left');
     rightWing.classList.toggle('flap-right');
@@ -131,18 +131,16 @@
   var stopAnimation = function() {
     EYE_ANIMATIONS[animationIndex]();
     animationIndex = (animationIndex === EYE_ANIMATIONS.length - 1) ? 0 : animationIndex + 1;
-    // timeElapsed = timeElapsed + EYE_ANIMATION_INTERVAL + WORK_INTERVAL;
-    // console.log('timeElapsed = ' + timeElapsed);
   };
 
   var startBreakAnimation = function() {
     dimBrighten();
-    takeABreak();
+    longBreak();
     updateMessage('Get up and go for a walk');
   };
 
   var stopBreakAnimation = function() {
-    takeABreak();
+    longBreak();
   };
 
   // only for testing
@@ -151,7 +149,7 @@
     upDownButton.addEventListener('click', function(evt) { upDown(); });
     aroundButton.addEventListener('click', function(evt) { around(); });
     blinkButton.addEventListener('click', function(evt) { blinkEyes(); });
-    takeABreakButton.addEventListener('click', function(evt) { takeABreak(); });
+    longBreakButton.addEventListener('click', function(evt) { longBreak(); });
   };
 
   var notify = function() {
