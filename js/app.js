@@ -23,9 +23,9 @@
   var animationIndex = 0;
   var timeElapsed = 0;
   var EYE_ANIMATION_INTERVAL = 10;
-  var LONG_BREAK_ANIMATION_INTERVAL = 20; // short for testing
-  var WORK_INTERVAL = 15; // short for testing
-  var TIME_TO_LONG_BREAK = 30; // short for testing
+  var LONG_BREAK_ANIMATION_INTERVAL = 5 * 60;
+  var WORK_INTERVAL = 15 * 60;
+  var TIME_TO_LONG_BREAK = 60 * 60;
   var WORK_MESSAGE = 'Time to work';
 
   var start = function(evt) {
