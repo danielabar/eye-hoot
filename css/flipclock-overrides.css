@@ -1,0 +1,14 @@
+.clock-container {
+  transform: scale(0.75);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.flip-clock-wrapper {
+  margin: 0;
+}
+
+.flip-clock-divider .flip-clock-label {
+  display: none;
+}

@@ -14,14 +14,8 @@ body {
   color: #fff;
 }
 
-.clock-container {
-  position: absolute;
-  top: 3%;
-  right: 3%;
-}
-
 .message {
-  margin-top: 0.5em;
+  margin-top: 0.9em;
   font-size: 4em;
   text-align: center
 }
@@ -30,7 +24,6 @@ body {
 .wrapper {
   width: 100%;
   height: 100%;
-  padding: 30px;
   position: relative;
 }
 
@@ -38,7 +31,7 @@ svg {
   width: calc(100% - 60px);
   max-height: calc(100% - 60px);
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

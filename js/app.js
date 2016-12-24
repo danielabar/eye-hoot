@@ -8,6 +8,7 @@
   var aroundButton;
   var blinkButton;
   var takeABreakButton;
+  var messageElement;
 
   var owlGraphic;
   var eyes;
@@ -22,6 +23,7 @@
   var animationIndex = 0;
   var EYE_ANIMATION_INTERVAL = 10;
   var WORK_INTERVAL = 15; // short for testing
+  var WORK_MESSAGE = 'Time to work...';
 
   var start = function(evt) {
     requestPermission();
@@ -54,6 +56,8 @@
     aroundButton = document.querySelector('.around');
     blinkButton = document.querySelector('.blink');
     takeABreakButton = document.querySelector('.take-a-break');
+
+    messageElement = document.querySelector('.message');
 
     owlGraphic = document.querySelector('.owl-graphic');
     eyes = document.querySelector('.eyes');
@@ -96,10 +100,17 @@
   }
 
   var EYE_ANIMATIONS = [sideToSide, upDown, around, blinkEyes];
+  var EYE_ANIMATIONS_MESSAGES = [
+    'Move your eyes from side to side',
+    'Move your eyes up and down',
+    'Move your eyes around in a circle',
+    'Open and close your eyes'
+  ];
   var BODY_ANIMATIONS = [takeABreak];
 
   var startAnimation = function() {
     EYE_ANIMATIONS[animationIndex]();
+    messageElement.innerHTML = EYE_ANIMATIONS_MESSAGES[animationIndex];
   };
 
   var stopAnimation = function() {
@@ -140,6 +151,7 @@
   };
 
   var startWorkClock = function() {
+    messageElement.innerHTML = WORK_MESSAGE;
     clock = $('.clock').FlipClock(WORK_INTERVAL, {
       clockFace: 'MinuteCounter',
       countdown: true,
