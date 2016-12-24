@@ -3,7 +3,6 @@
 
   var notifyPermission = false;
 
-  var testButton;
   var sideToSideButton;
   var upDownButton;
   var aroundButton;
@@ -20,6 +19,9 @@
   var rightFoot;
 
   var clock;
+  var animationIndex = 0;
+  var EYE_ANIMATION_INTERVAL = 10;
+  var WORK_INTERVAL = 15; // short for testing
 
   var start = function(evt) {
     requestPermission();
@@ -36,7 +38,7 @@
           notifyPermission = true;
           findElements();
           registerEvents();
-          startClock();
+          startWorkClock();
         } else {
           handleNotificationDenied();
         }
@@ -47,7 +49,6 @@
   };
 
   var findElements = function() {
-    testButton = document.querySelector('.test');
     sideToSideButton = document.querySelector('.side-to-side');
     upDownButton = document.querySelector('.up-down');
     aroundButton = document.querySelector('.around');
@@ -68,81 +69,78 @@
     eyes.classList.toggle('side-to-side');
     leftEyeShine.classList.toggle('side-to-side');
     rightEyeShine.classList.toggle('side-to-side');
-  }
+  };
 
   var upDown = function() {
     eyes.classList.toggle('up-down');
     leftEyeShine.classList.toggle('up-down');
     rightEyeShine.classList.toggle('up-down');
+  };
+
+  var around = function() {
+    eyes.classList.toggle('around');
+    leftEyeShine.classList.toggle('around');
+    rightEyeShine.classList.toggle('around');
+  };
+
+  var blinkEyes = function() {
+    eyes.classList.toggle('blink');
+  };
+
+  var takeABreak = function() {
+    owlGraphic.classList.toggle('wobble');
+    leftWing.classList.toggle('flap-left');
+    rightWing.classList.toggle('flap-right');
+    rightFoot.classList.toggle('march');
+    leftFoot.classList.toggle('march');
   }
 
-  var ANIMATIONS = [sideToSide, upDown];
+  var EYE_ANIMATIONS = [sideToSide, upDown, around, blinkEyes];
+  var BODY_ANIMATIONS = [takeABreak];
 
+  var startAnimation = function() {
+    EYE_ANIMATIONS[animationIndex]();
+  };
+
+  var stopAnimation = function() {
+    EYE_ANIMATIONS[animationIndex]();
+    animationIndex = (animationIndex === EYE_ANIMATIONS.length - 1) ? 0 : animationIndex + 1;
+  };
+
+  // only for testing
   var registerEvents = function() {
-    testButton.addEventListener('click', function(evt) {
-      eyes.classList.toggle('to-side');
-    });
-
-    sideToSideButton.addEventListener('click', function(evt) {
-      sideToSide();
-    });
-
-    upDownButton.addEventListener('click', function(evt) {
-      upDown();
-    });
-
-    aroundButton.addEventListener('click', function(evt) {
-      eyes.classList.toggle('around');
-      leftEyeShine.classList.toggle('around');
-      rightEyeShine.classList.toggle('around');
-    });
-
-    blinkButton.addEventListener('click', function(evt) {
-      eyes.classList.toggle('blink');
-    });
-
-    takeABreakButton.addEventListener('click', function(evt) {
-      owlGraphic.classList.toggle('wobble');
-      leftWing.classList.toggle('flap-left');
-      rightWing.classList.toggle('flap-right');
-      rightFoot.classList.toggle('march');
-      leftFoot.classList.toggle('march');
-    });
+    sideToSideButton.addEventListener('click', function(evt) { sideToSide(); });
+    upDownButton.addEventListener('click', function(evt) { upDown(); });
+    aroundButton.addEventListener('click', function(evt) { around(); });
+    blinkButton.addEventListener('click', function(evt) { blinkEyes(); });
+    takeABreakButton.addEventListener('click', function(evt) { takeABreak(); });
   };
 
   var notify = function() {
-    var n = new Notification('Eye break!', {
-      body: 'Move your eyes from side to side.',
+    var n = new Notification('Eye hoot', {
+      body: 'Time for a break!',
       icon: 'images/owl.png'
     });
     n.onclick = function() {
-      // focus this app
       window.focus();
       n.close();
+      startAnimation();
 
-      // start animation
-      ANIMATIONS[0].call();
-
-      // set clock for animation interval
-      clock = $('.clock').FlipClock(10, {
+      clock = $('.clock').FlipClock(EYE_ANIMATION_INTERVAL, {
         clockFace: 'MinuteCounter',
         countdown: true,
         callbacks: {
           stop: function() {
-            // turn off animation
-            ANIMATIONS[0].call();
-
-            // start all over again
-            startClock();
+            stopAnimation();
+            startWorkClock();
           }
         }
       });
     }
   };
 
-  var startClock = function() {
-    // short interval to verify which event for countdown reached
-    clock = $('.clock').FlipClock(15, {
+  var startWorkClock = function() {
+    clock = $('.clock').FlipClock(WORK_INTERVAL, {
       clockFace: 'MinuteCounter',
       countdown: true,
       callbacks: {
