@@ -27,13 +27,22 @@ body {
   position: relative;
 }
 
-svg {
+/* http://stackoverflow.com/questions/9622354/make-a-div-center-of-viewport-horizontally-and-vertically/34084294#34084294 */
+.owl-svg {
   width: calc(100% - 60px);
   max-height: calc(100% - 60px);
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  opacity: 1;
+  filter: grayscale(0);
+  transition: opacity 0.5s linear, filter 0.5s linear;
+}
+
+.dim {
+  opacity: 0.5;
+  filter: grayscale(75%);
 }
 
 .owl-container {
@@ -43,6 +52,32 @@ svg {
 
 .owl-graphic {
   transform-origin: center bottom;
+  filter: grayscale(100%);
+}
+
+.owl-body,
+.iris {
+  fill: #01bdc8;
+}
+
+.stomach,
+.sclera,
+.eye-shine {
+  fill: #fbfcfc;
+}
+
+.nose {
+  fill: #ea9f4b;
+}
+
+.foot,
+.wing,
+.eye-liner {
+  fill: #967643;
+}
+
+.pupil {
+  fill: #000505;
 }
 
 .owl-graphic.wobble {

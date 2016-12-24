@@ -11,6 +11,8 @@
   var messageElement;
 
   var owlGraphic;
+  var owlSvg;
+
   var eyes;
   var leftEyeShine;
   var rightEyeShine;
@@ -60,6 +62,8 @@
     messageElement = document.querySelector('.message');
 
     owlGraphic = document.querySelector('.owl-graphic');
+    owlSvg = document.querySelector('.owl-svg');
+
     eyes = document.querySelector('.eyes');
     leftEyeShine = document.querySelector('.left-eye-shine');
     rightEyeShine = document.querySelector('.right-eye-shine');
@@ -99,6 +103,10 @@
     leftFoot.classList.toggle('march');
   }
 
+  var dimBrighten = function() {
+    owlSvg.classList.toggle('dim');
+  }
+
   var EYE_ANIMATIONS = [sideToSide, upDown, around, blinkEyes];
   var EYE_ANIMATIONS_MESSAGES = [
     'Move your eyes from side to side',
@@ -109,6 +117,7 @@
   var BODY_ANIMATIONS = [takeABreak];
 
   var startAnimation = function() {
+    dimBrighten();
     EYE_ANIMATIONS[animationIndex]();
     messageElement.innerHTML = EYE_ANIMATIONS_MESSAGES[animationIndex];
   };
@@ -152,6 +161,7 @@
 
   var startWorkClock = function() {
     messageElement.innerHTML = WORK_MESSAGE;
+    dimBrighten();
     clock = $('.clock').FlipClock(WORK_INTERVAL, {
       clockFace: 'MinuteCounter',
       countdown: true,
