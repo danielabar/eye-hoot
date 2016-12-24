@@ -37,7 +37,7 @@ body {
   transform: translate(-50%, -50%);
   opacity: 1;
   filter: grayscale(0);
-  transition: opacity 0.5s linear, filter 0.5s linear;
+  transition: opacity 1s linear, filter 1s linear;
 }
 
 .dim {
