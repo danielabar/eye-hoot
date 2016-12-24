@@ -23,8 +23,11 @@
 
   var clock;
   var animationIndex = 0;
+  var timeElapsed = 0;
   var EYE_ANIMATION_INTERVAL = 10;
+  var BREAK_ANIMATION_INTERVAL = 20; // short for testing
   var WORK_INTERVAL = 15; // short for testing
+  var TIME_TO_LONG_BREAK = 30; // short for testing
   var WORK_MESSAGE = 'Time to work';
 
   var start = function(evt) {
@@ -118,7 +121,6 @@
     'Move your eyes around in a circle',
     'Open and close your eyes'
   ];
-  var BODY_ANIMATIONS = [takeABreak];
 
   var startAnimation = function() {
     dimBrighten();
@@ -129,6 +131,18 @@
   var stopAnimation = function() {
     EYE_ANIMATIONS[animationIndex]();
     animationIndex = (animationIndex === EYE_ANIMATIONS.length - 1) ? 0 : animationIndex + 1;
+    // timeElapsed = timeElapsed + EYE_ANIMATION_INTERVAL + WORK_INTERVAL;
+    // console.log('timeElapsed = ' + timeElapsed);
+  };
+
+  var startBreakAnimation = function() {
+    dimBrighten();
+    takeABreak();
+    updateMessage('Get up and go for a walk');
+  };
+
+  var stopBreakAnimation = function() {
+    takeABreak();
   };
 
   // only for testing
@@ -145,23 +159,41 @@
       body: 'Time for a break!',
       icon: 'images/owl.png'
     });
-    n.onclick = function() {
-      window.focus();
-      n.close();
-      startAnimation();
-
-      clock = $('.clock').FlipClock(EYE_ANIMATION_INTERVAL, {
-        clockFace: 'MinuteCounter',
-        countdown: true,
-        callbacks: {
-          stop: function() {
-            stopAnimation();
-            startWork();
-          }
-        }
-      });
-    }
+    n.onclick = notificationClickedHandler.bind(n);
   };
+
+  var notificationClickedHandler = function() {
+    window.focus();
+    this.close();
+    if (timeElapsed < TIME_TO_LONG_BREAK) {
+      startAnimation();
+      startAnimationClock(EYE_ANIMATION_INTERVAL);
+    } else {
+      startBreakAnimation();
+      startAnimationClock(BREAK_ANIMATION_INTERVAL);
+    }
+  }
+
+  var startAnimationClock = function(interval) {
+    clock = $('.clock').FlipClock(interval, {
+      clockFace: 'MinuteCounter',
+      countdown: true,
+      callbacks: {
+        stop: stopClockHandler
+      }
+    });
+  }
+
+  var stopClockHandler = function() {
+    if (timeElapsed < TIME_TO_LONG_BREAK) {
+      stopAnimation();
+      timeElapsed = timeElapsed + EYE_ANIMATION_INTERVAL + WORK_INTERVAL;
+    } else {
+      stopBreakAnimation();
+      timeElapsed = 0;
+    }
+    startWork();
+  }
 
   var startWork = function() {
     updateMessage(WORK_MESSAGE);
