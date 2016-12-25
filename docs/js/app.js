@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  var notifyPermission = false;
-
   var sideToSideButton;
   var upDownButton;
   var aroundButton;
@@ -25,25 +23,25 @@
   var animationIndex = 0;
   var timeElapsed = 0;
   var EYE_ANIMATION_INTERVAL = 10;
-  var BREAK_ANIMATION_INTERVAL = 20; // short for testing
-  var WORK_INTERVAL = 15; // short for testing
-  var TIME_TO_LONG_BREAK = 30; // short for testing
+  var LONG_BREAK_ANIMATION_INTERVAL = 5 * 60;
+  var WORK_INTERVAL = 15 * 60;
+  var TIME_TO_LONG_BREAK = 60 * 60;
   var WORK_MESSAGE = 'Time to work';
 
   var start = function(evt) {
+    findElements();
     requestPermission();
   };
 
   var handleNotificationDenied = function() {
-    document.querySelector('.message').innerHTML = 'Sorry this app does not work without notifications for now.';
+    dimBrighten();
+    document.querySelector('.message').innerHTML = 'Please allow notifications to use Eye Hoot.';
   }
 
   var requestPermission = function() {
     if (window.Notification && Notification.permission !== 'denied') {
       Notification.requestPermission(function(status) {
         if (status === 'granted') {
-          notifyPermission = true;
-          findElements();
           registerEvents();
           startWork();
         } else {
@@ -112,6 +110,7 @@
 
   var dimBrighten = function() {
     owlSvg.classList.toggle('dim');
+    messageElement.classList.toggle('dim');
   }
 
   var EYE_ANIMATIONS = [sideToSide, upDown, around, blinkEyes];
@@ -133,7 +132,7 @@
     animationIndex = (animationIndex === EYE_ANIMATIONS.length - 1) ? 0 : animationIndex + 1;
   };
 
-  var startBreakAnimation = function() {
+  var startLongBreakAnimation = function() {
     dimBrighten();
     longBreak();
     updateMessage('Get up and go for a walk');
@@ -167,8 +166,8 @@
       startAnimation();
       startAnimationClock(EYE_ANIMATION_INTERVAL);
     } else {
-      startBreakAnimation();
-      startAnimationClock(BREAK_ANIMATION_INTERVAL);
+      startLongBreakAnimation();
+      startAnimationClock(LONG_BREAK_ANIMATION_INTERVAL);
     }
   }
 
@@ -190,6 +189,7 @@
       stopBreakAnimation();
       timeElapsed = 0;
     }
+    document.getElementById('breakOver').play();
     startWork();
   }
 
