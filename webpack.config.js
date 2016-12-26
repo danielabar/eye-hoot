@@ -3,6 +3,7 @@
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
 
@@ -16,7 +17,9 @@ module.exports = {
   },
 
   plugins: [
+    // generate a rev'd css file
     new ExtractTextPlugin('styles-[hash].css'),
+    // generate index.html with rev'd assets injected
     new HtmlWebpackPlugin({
       template: 'index.template.ejs',
       inject: 'body',
