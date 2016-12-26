@@ -1,4 +1,5 @@
 import audioFileUrl from '../sounds/ding.mp3';
+import owlImage from '../images/owl.png';
 
 var sideToSideButton;
 var upDownButton;
@@ -157,7 +158,7 @@ var registerEvents = function() {
 var notify = function() {
   var n = new Notification('Eye hoot', {
     body: 'Time for a break!',
-    icon: 'images/owl.png'
+    icon: owlImage
   });
   n.onclick = notificationClickedHandler.bind(n);
 };
