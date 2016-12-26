@@ -1,9 +1,13 @@
+import audioFileUrl from '../sounds/ding.mp3';
+
 var sideToSideButton;
 var upDownButton;
 var aroundButton;
 var blinkButton;
 var longBreakButton;
+
 var messageElement;
+var audioElement;
 
 var owlGraphic;
 var owlSvg;
@@ -58,6 +62,8 @@ var findElements = function() {
   longBreakButton = document.querySelector('.take-a-break');
 
   messageElement = document.querySelector('.message');
+  audioElement = document.querySelector('.break-over');
+  audioElement.src = audioFileUrl;
 
   owlGraphic = document.querySelector('.owl-graphic');
   owlSvg = document.querySelector('.owl-svg');
@@ -186,7 +192,7 @@ var stopClockHandler = function() {
     stopBreakAnimation();
     timeElapsed = 0;
   }
-  document.getElementById('breakOver').play();
+  audioElement.play();
   startWork();
 }
 
