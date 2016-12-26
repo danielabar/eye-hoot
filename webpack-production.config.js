@@ -2,7 +2,8 @@
 
 var path = require('path');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var devConfig = require('./webpack.config.js');
+var webpack = require('webpack');
+var baseConfig = require('./webpack.config.js');
 
 var cleanPlugin = new CleanWebpackPlugin(['docs'], {
   root: path.resolve('./'),
@@ -11,6 +12,12 @@ var cleanPlugin = new CleanWebpackPlugin(['docs'], {
   exclude: ['CNAME', 'owl.ico']
 });
 
-devConfig.plugins.push(cleanPlugin);
+// environment specific config
+var definePlugin = new webpack.DefinePlugin({
+  DEFAULT_WORK_INTERVAL: "900"  // 15 * 60
+})
 
-module.exports = devConfig;
+baseConfig.plugins.push(cleanPlugin);
+baseConfig.plugins.push(definePlugin);
+
+module.exports = baseConfig;

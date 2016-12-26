@@ -26,7 +26,8 @@ var animationIndex = 0;
 var timeElapsed = 0;
 var EYE_ANIMATION_INTERVAL = 10;
 var LONG_BREAK_ANIMATION_INTERVAL = 5 * 60;
-var WORK_INTERVAL = 15 * 60;
+// var WORK_INTERVAL = 15 * 60;
+var WORK_INTERVAL = DEFAULT_WORK_INTERVAL;
 var TIME_TO_LONG_BREAK = 60 * 60;
 var WORK_MESSAGE = 'Time to work';
 
