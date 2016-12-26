@@ -2,29 +2,26 @@
 
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 
-  // Sets relative root directory for "entry" key
-  context: path.resolve('js'),
-
   // Application entrypoint
-  entry: ['./index'],
+  entry: ['./js/index'],
 
   output: {
-    path: path.resolve('docs/js/'),  // directory where bundle will go
-    publicPath: 'js/',              // where dev server will serve bundle from, matches index.html
-    filename: 'bundle.js'
+    path: path.resolve('docs/'),    // directory where bundle will go
+    publicPath: '/',                // where dev server will serve bundle from
+    filename: 'bundle-[hash].js'    // rev the bundle for cache busting
   },
 
   plugins: [
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('styles-[hash].css'),
+    new HtmlWebpackPlugin({
+      template: 'index.template.ejs',
+      inject: 'body',
+    })
   ],
-
-  // So that requests for root / will serve public/index.html
-  // devServer: {
-  //   contentBase: 'public'
-  // },
 
   module: {
     loaders: [
