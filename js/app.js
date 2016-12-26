@@ -37,7 +37,7 @@ export function start() {
 
 var handleNotificationDenied = function() {
   dimBrighten();
-  document.querySelector('.message').innerHTML = 'Please allow notifications to use Eye Hoot.';
+  messageElement.innerHTML = 'Please allow notifications to use Eye Hoot.';
 }
 
 var requestPermission = function() {
@@ -158,7 +158,8 @@ var registerEvents = function() {
 var notify = function() {
   var n = new Notification('Eye hoot', {
     body: 'Time for a break!',
-    icon: owlImage
+    icon: owlImage,
+    requireInteraction: true
   });
   n.onclick = notificationClickedHandler.bind(n);
 };
