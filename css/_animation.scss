@@ -1,3 +1,12 @@
+@keyframes to-wobble {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+
 @keyframes wobble {
   0% {
     transform: rotate(-2deg);

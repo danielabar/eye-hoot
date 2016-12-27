@@ -54,7 +54,7 @@
 }
 
 .owl-graphic.wobble {
-  animation: wobble 0.75s linear 0.5s alternate infinite;
+  animation: to-wobble 0.5s ease, wobble 0.75s linear 0.5s alternate infinite;
 }
 
 .eyes.side-to-side {
