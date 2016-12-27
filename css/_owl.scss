@@ -1,30 +1,5 @@
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  background: #333333;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
-  color: #fff;
-}
-
-.message {
-  margin-top: 0.9em;
-  font-size: 4em;
-  text-align: center;
-  opacity: 1;
-  filter: grayscale(0);
-  transition: opacity 1s linear, filter 1s linear;
-}
-
 /* http://stackoverflow.com/questions/9622354/make-a-div-center-of-viewport-horizontally-and-vertically/34084294#34084294 */
-.wrapper {
+.owl-wrapper {
   width: 100%;
   height: 100%;
   position: relative;
@@ -43,11 +18,6 @@ body {
   transition: opacity 1s linear, filter 1s linear;
 }
 
-.dim {
-  opacity: 0.5;
-  filter: grayscale(75%);
-}
-
 .owl-container {
   perspective: 100px;
   transform: translateX(70px);
@@ -60,31 +30,31 @@ body {
 
 .owl-body,
 .iris {
-  fill: #01bdc8;
+  fill: $owl-main-color;
 }
 
 .stomach,
 .sclera,
 .eye-shine {
-  fill: #fbfcfc;
+  fill: $owl-background-color;
 }
 
 .nose {
-  fill: #ea9f4b;
+  fill: $owl-accent-color;
 }
 
 .foot,
 .wing,
 .eye-liner {
-  fill: #967643;
+  fill: $owl-extremities-color;
 }
 
 .pupil {
-  fill: #000505;
+  fill: $owl-dark-color;
 }
 
 .owl-graphic.wobble {
-  animation: wobble 0.75s linear 0.5s alternate infinite;
+  animation: to-wobble 0.5s ease, wobble 0.75s linear 0.5s alternate infinite;
 }
 
 .eyes.side-to-side {
@@ -100,15 +70,15 @@ body {
 }
 
 .eyes.up-down {
-  animation: up-down 1s ease 0s alternate infinite;
+  animation: to-up 0.5s ease, up-down 1s ease 0.5s alternate infinite;
 }
 
 .left-eye-shine.up-down {
-  animation: up-down-small 1s ease 0s alternate infinite;
+  animation: to-up-small 0.5s ease, up-down-small 1s ease 0.5s alternate infinite;
 }
 
 .right-eye-shine.up-down {
-  animation: up-down-small 1s ease 0s alternate infinite;
+  animation: to-up-small 0.5s ease, up-down-small 1s ease 0.5s alternate infinite;
 }
 
 .eyes.around {

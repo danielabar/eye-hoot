@@ -1,0 +1,29 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: $app-background;
+  font-family: $app-font-stack;
+  font-weight: 300;
+  color: $app-color;
+}
+
+.message {
+  margin-top: 0.9em;
+  font-size: 4em;
+  text-align: center;
+  opacity: 1;
+  filter: grayscale(0);
+  transition: opacity 1s linear, filter 1s linear;
+}
+
+.dim {
+  opacity: 0.5;
+  filter: grayscale(75%);
+}

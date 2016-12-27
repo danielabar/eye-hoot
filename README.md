@@ -12,8 +12,8 @@ Original owl image [Clipart Panda](http://www.clipartpanda.com/clipart_images/ow
 
 ## TODO
 
-- [ ] Smooth out animations
-- [ ] Remove debug buttons
+- [x] Smooth out animations
+- [x] Remove debug buttons
 - [x] Build system (Webpack, ES2015 modules, SASS, rev bundle)
 - [ ] Settings (time between short breaks, time between long breaks)
 - [ ] Add help
