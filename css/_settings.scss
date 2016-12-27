@@ -7,8 +7,19 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 200px;
+  width: $settings-width;
+  padding: 10px;
   z-index: 2;
   background-color: $settings-background;
   border-right: 1px solid $settings-border;
+  transition: transform 0.5s ease;
+}
+
+.settings-control {
+  margin: 10px 0;
+}
+
+.settings-label,
+.settings-input {
+  display: inline-block;
 }

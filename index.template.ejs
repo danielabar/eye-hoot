@@ -10,18 +10,36 @@
 <body>
 
   <!-- <button class="settings-button">Settings</button> -->
-  <div class="settings-container">
-    Settings TBD
-  </div>
+  <section class="settings-container">
+    <div class="settings-control">
+      <div class="settings-label">
+        Minutes between short breaks
+      </div>
+      <div class="settings-input">
+        <input type="number" name="shortBreakInterval" min="5" max="60">
+      </div>
+    </div>
+    <div class="settings-control">
+      <div class="settings-label">
+        Minutes between long breaks
+      </div>
+      <div class="settings-input">
+        <input type="number" name="longBreakInterval" min="5" max="60">
+      </div>
+    </div>
+    <div class="settings-control">
+      Sound
+    </div>
+  </section>
 
   <!-- timer -->
-  <div class="clock-container">
+  <section class="clock-container">
     <audio class="break-start" preload="auto"></audio>
     <audio class="break-over" preload="auto"></audio>
     <div class="clock"></div>
-  </div>
+  </section>
 
-  <div class="message"></div>
+  <section class="message"></section>
 
   <div class="owl-wrapper">
 
