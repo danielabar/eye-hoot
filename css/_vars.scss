@@ -2,6 +2,9 @@ $app-background: #333333;
 $app-color: #fff;
 $app-font-stack: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
+$settings-background: darken($app-background, 15%);
+$settings-border: lighten($app-background, 15%);
+
 $owl-main-color: #01bdc8;
 $owl-background-color: #fbfcfc;
 $owl-accent-color: #ea9f4b;
