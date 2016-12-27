@@ -1,4 +1,5 @@
-import audioFileUrl from '../sounds/ding.mp3';
+import breakStartAudioFile from '../sounds/tweet.mp3';
+import breakOverAudioFile from '../sounds/ding.mp3';
 import owlImage from '../images/owl.png';
 
 var sideToSideButton;
@@ -8,7 +9,8 @@ var blinkButton;
 var longBreakButton;
 
 var messageElement;
-var audioElement;
+var audioBreakStartEl;
+var audioBreakOverEl;
 
 var owlGraphic;
 var owlSvg;
@@ -26,7 +28,7 @@ var animationIndex = 0;
 var timeElapsed = 0;
 var EYE_ANIMATION_INTERVAL = 10;
 var LONG_BREAK_ANIMATION_INTERVAL = 5 * 60;
-var WORK_INTERVAL = 15 * 60;
+var WORK_INTERVAL = DEFAULT_WORK_INTERVAL;
 var TIME_TO_LONG_BREAK = 60 * 60;
 var WORK_MESSAGE = 'Time to work';
 
@@ -37,7 +39,7 @@ export function start() {
 
 var handleNotificationDenied = function() {
   dimBrighten();
-  document.querySelector('.message').innerHTML = 'Please allow notifications to use Eye Hoot.';
+  messageElement.innerHTML = 'Please allow notifications to use Eye Hoot.';
 }
 
 var requestPermission = function() {
@@ -63,8 +65,11 @@ var findElements = function() {
   longBreakButton = document.querySelector('.take-a-break');
 
   messageElement = document.querySelector('.message');
-  audioElement = document.querySelector('.break-over');
-  audioElement.src = audioFileUrl;
+
+  audioBreakOverEl = document.querySelector('.break-over');
+  audioBreakOverEl.src = breakOverAudioFile;
+  audioBreakStartEl = document.querySelector('.break-start');
+  audioBreakStartEl.src = breakStartAudioFile;
 
   owlGraphic = document.querySelector('.owl-graphic');
   owlSvg = document.querySelector('.owl-svg');
@@ -158,8 +163,10 @@ var registerEvents = function() {
 var notify = function() {
   var n = new Notification('Eye hoot', {
     body: 'Time for a break!',
-    icon: owlImage
+    icon: owlImage,
+    requireInteraction: true
   });
+  audioBreakStartEl.play();
   n.onclick = notificationClickedHandler.bind(n);
 };
 
@@ -193,7 +200,7 @@ var stopClockHandler = function() {
     stopBreakAnimation();
     timeElapsed = 0;
   }
-  audioElement.play();
+  audioBreakOverEl.play();
   startWork();
 }
 
