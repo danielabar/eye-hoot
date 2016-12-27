@@ -1,52 +1,38 @@
 import breakStartAudioFile from '../sounds/tweet.mp3';
 import breakOverAudioFile from '../sounds/ding.mp3';
 import owlImage from '../images/owl.png';
+import {animationControl} from './animation';
 
-var sideToSideButton;
-var upDownButton;
-var aroundButton;
-var blinkButton;
-var longBreakButton;
+let messageElement;
+let audioBreakStartEl;
+let audioBreakOverEl;
 
-var messageElement;
-var audioBreakStartEl;
-var audioBreakOverEl;
+let owlSvg;
 
-var owlGraphic;
-var owlSvg;
+let clock;
+let timeElapsed = 0;
 
-var eyes;
-var leftEyeShine;
-var rightEyeShine;
-var leftWing;
-var rightWing;
-var leftFoot;
-var rightFoot;
+let EYE_ANIMATION_INTERVAL = 10;
+let LONG_BREAK_ANIMATION_INTERVAL = DEFAULT_LONG_BREAK_ANIMATION_INTERVAL;
+let WORK_INTERVAL = DEFAULT_WORK_INTERVAL;
+let TIME_TO_LONG_BREAK = DEFAULT_TIME_TO_LONG_BREAK;
 
-var clock;
-var animationIndex = 0;
-var timeElapsed = 0;
-var EYE_ANIMATION_INTERVAL = 10;
-var LONG_BREAK_ANIMATION_INTERVAL = 5 * 60;
-var WORK_INTERVAL = DEFAULT_WORK_INTERVAL;
-var TIME_TO_LONG_BREAK = 60 * 60;
-var WORK_MESSAGE = 'Time to work';
+const WORK_MESSAGE = 'Time to work';
 
 export function start() {
   findElements();
   requestPermission();
 };
 
-var handleNotificationDenied = function() {
+let handleNotificationDenied = function() {
   dimBrighten();
   messageElement.innerHTML = 'Please allow notifications to use Eye Hoot.';
 }
 
-var requestPermission = function() {
+let requestPermission = function() {
   if (window.Notification && Notification.permission !== 'denied') {
     Notification.requestPermission(function(status) {
       if (status === 'granted') {
-        registerEvents();
         startWork();
       } else {
         handleNotificationDenied();
@@ -57,13 +43,7 @@ var requestPermission = function() {
   }
 };
 
-var findElements = function() {
-  sideToSideButton = document.querySelector('.side-to-side');
-  upDownButton = document.querySelector('.up-down');
-  aroundButton = document.querySelector('.around');
-  blinkButton = document.querySelector('.blink');
-  longBreakButton = document.querySelector('.take-a-break');
-
+let findElements = function() {
   messageElement = document.querySelector('.message');
 
   audioBreakOverEl = document.querySelector('.break-over');
@@ -71,97 +51,40 @@ var findElements = function() {
   audioBreakStartEl = document.querySelector('.break-start');
   audioBreakStartEl.src = breakStartAudioFile;
 
-  owlGraphic = document.querySelector('.owl-graphic');
   owlSvg = document.querySelector('.owl-svg');
-
-  eyes = document.querySelector('.eyes');
-  leftEyeShine = document.querySelector('.left-eye-shine');
-  rightEyeShine = document.querySelector('.right-eye-shine');
-  leftWing = document.querySelector('.left-wing');
-  rightWing = document.querySelector('.right-wing');
-  leftFoot = document.querySelector('.left-foot');
-  rightFoot = document.querySelector('.right-foot');
 };
 
-var updateMessage = function(message) {
+let updateMessage = function(message) {
   messageElement.innerHTML = message;
 };
 
-var sideToSide = function() {
-  eyes.classList.toggle('side-to-side');
-  leftEyeShine.classList.toggle('side-to-side');
-  rightEyeShine.classList.toggle('side-to-side');
-};
-
-var upDown = function() {
-  eyes.classList.toggle('up-down');
-  leftEyeShine.classList.toggle('up-down');
-  rightEyeShine.classList.toggle('up-down');
-};
-
-var around = function() {
-  eyes.classList.toggle('around');
-  leftEyeShine.classList.toggle('around');
-  rightEyeShine.classList.toggle('around');
-};
-
-var blinkEyes = function() {
-  eyes.classList.toggle('blink');
-};
-
-var longBreak = function() {
-  owlGraphic.classList.toggle('wobble');
-  leftWing.classList.toggle('flap-left');
-  rightWing.classList.toggle('flap-right');
-  rightFoot.classList.toggle('march');
-  leftFoot.classList.toggle('march');
-}
-
-var dimBrighten = function() {
+let dimBrighten = function() {
   owlSvg.classList.toggle('dim');
   messageElement.classList.toggle('dim');
 }
 
-var EYE_ANIMATIONS = [sideToSide, upDown, around, blinkEyes];
-var EYE_ANIMATIONS_MESSAGES = [
-  'Move your eyes from side to side',
-  'Move your eyes up and down',
-  'Move your eyes around in a circle',
-  'Open and close your eyes'
-];
-
-var startAnimation = function() {
+let startAnimation = function() {
   dimBrighten();
-  EYE_ANIMATIONS[animationIndex]();
-  updateMessage(EYE_ANIMATIONS_MESSAGES[animationIndex]);
+  animationControl.playAnimation();
+  updateMessage(animationControl.getAnimationMessage());
 };
 
-var stopAnimation = function() {
-  EYE_ANIMATIONS[animationIndex]();
-  animationIndex = (animationIndex === EYE_ANIMATIONS.length - 1) ? 0 : animationIndex + 1;
+let stopAnimation = function() {
+  animationControl.stopAnimation();
 };
 
-var startLongBreakAnimation = function() {
+let startLongBreakAnimation = function() {
   dimBrighten();
-  longBreak();
-  updateMessage('Get up and go for a walk');
+  animationControl.startStopLongBreakAnimation();
+  updateMessage(animationControl.longBreakAnimationMessage);
 };
 
-var stopBreakAnimation = function() {
-  longBreak();
+let stopBreakAnimation = function() {
+  animationControl.startStopLongBreakAnimation();
 };
 
-// only for testing
-var registerEvents = function() {
-  sideToSideButton.addEventListener('click', function(evt) { sideToSide(); });
-  upDownButton.addEventListener('click', function(evt) { upDown(); });
-  aroundButton.addEventListener('click', function(evt) { around(); });
-  blinkButton.addEventListener('click', function(evt) { blinkEyes(); });
-  longBreakButton.addEventListener('click', function(evt) { longBreak(); });
-};
-
-var notify = function() {
-  var n = new Notification('Eye hoot', {
+let notify = function() {
+  let n = new Notification('Eye hoot', {
     body: 'Time for a break!',
     icon: owlImage,
     requireInteraction: true
@@ -170,7 +93,7 @@ var notify = function() {
   n.onclick = notificationClickedHandler.bind(n);
 };
 
-var notificationClickedHandler = function() {
+let notificationClickedHandler = function() {
   window.focus();
   this.close();
   if (timeElapsed < TIME_TO_LONG_BREAK) {
@@ -182,7 +105,7 @@ var notificationClickedHandler = function() {
   }
 }
 
-var startAnimationClock = function(interval) {
+let startAnimationClock = function(interval) {
   clock = $('.clock').FlipClock(interval, {
     clockFace: 'MinuteCounter',
     countdown: true,
@@ -192,7 +115,7 @@ var startAnimationClock = function(interval) {
   });
 }
 
-var stopClockHandler = function() {
+let stopClockHandler = function() {
   if (timeElapsed < TIME_TO_LONG_BREAK) {
     stopAnimation();
     timeElapsed = timeElapsed + EYE_ANIMATION_INTERVAL + WORK_INTERVAL;
@@ -204,13 +127,13 @@ var stopClockHandler = function() {
   startWork();
 }
 
-var startWork = function() {
+let startWork = function() {
   updateMessage(WORK_MESSAGE);
   dimBrighten();
   startWorkClock();
 };
 
-var startWorkClock = function() {
+let startWorkClock = function() {
   clock = $('.clock').FlipClock(WORK_INTERVAL, {
     clockFace: 'MinuteCounter',
     countdown: true,
