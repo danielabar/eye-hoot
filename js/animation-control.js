@@ -47,7 +47,7 @@ let EYE_ANIMATIONS_MESSAGES = [
   'Open and close your eyes'
 ];
 
-const longBreakAnimationMessage = 'Get up and for for a walk';
+const longBreakAnimationMessage = 'Get up and go for for a walk';
 
 let playAnimation = function() {
   EYE_ANIMATIONS[animationIndex]();

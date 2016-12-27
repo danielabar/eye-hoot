@@ -1,7 +1,7 @@
 import breakStartAudioFile from '../sounds/tweet.mp3';
 import breakOverAudioFile from '../sounds/ding.mp3';
 import owlImage from '../images/owl.png';
-import {animationControl} from './animation';
+import {animationControl} from './animation-control';
 
 let messageElement;
 let audioBreakStartEl;
