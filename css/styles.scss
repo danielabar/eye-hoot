@@ -1,4 +1,9 @@
+// vendor
 @import 'reset';
 @import 'flipclock-overrides';
+
+// app
+@import 'vars';
 @import 'animation';
+@import 'owl';
 @import 'app';
