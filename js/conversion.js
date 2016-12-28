@@ -8,10 +8,15 @@ let minutesToSeconds = function(val) {
   return val * SECONDS_IN_MINUTE;
 }
 
+let stringToBoolean = function(val) {
+  return val === 'true' ? true : false;
+}
+
 // public api
 let conversion =  {
   secondsToMinutes,
-  minutesToSeconds
+  minutesToSeconds,
+  stringToBoolean
 };
 
 export {conversion};

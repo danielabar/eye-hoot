@@ -32,7 +32,7 @@ let retrieveItem = function(key) {
 let retrieve = function(key, defaultVal) {
   if (localStorageAvailable) {
     let result = retrieveItem(key);
-    return result || defaultVal;
+    return result == undefined ? defaultVal : result;
   } else {
     return defaultVal;
   }
