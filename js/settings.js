@@ -1,3 +1,5 @@
+import {persistence} from './persistence';
+
 const SECONDS_IN_MINUTE = 60;
 
 const eyeExerciseIntervalEl = document.getElementsByName('eyeExerciseInterval')[0];
@@ -11,16 +13,14 @@ export class Settings {
     this._populateFields();
   }
 
-  // TODO check localStorage, otherwise use defaults
   _init() {
-    this._eyeExerciseInterval = DEFAULT_EYE_EXERCISE_INTERVAL;
-    this._longBreakInterval = DEFAULT_LONG_BREAK_INTERVAL;
     this._eyeExerciseDuration = DEFAULT_EYE_EXERCISE_DURATION;
-    this._longBreakDuration = DEFAULT_LONG_BREAK_DURATION;
+    this._eyeExerciseInterval = persistence.retrieve('_eyeExerciseInterval', DEFAULT_EYE_EXERCISE_INTERVAL);
+    this._longBreakInterval = persistence.retrieve('_longBreakInterval', DEFAULT_LONG_BREAK_INTERVAL);
+    this._longBreakDuration = persistence.retrieve('_longBreakDuration', DEFAULT_LONG_BREAK_DURATION);
     this._soundEnabled = true;
   }
 
-  // TODO save to localStorage
   // Nice to have: show check beside field if successfully updated
   _registerEvents() {
     eyeExerciseIntervalEl.addEventListener('blur', () => this._numericChangeHandler(eyeExerciseIntervalEl, '_eyeExerciseInterval'));
@@ -39,6 +39,7 @@ export class Settings {
     let newVal = element.value;
     if (newVal !== this[property]) {
       this[property] = this._minutesToSeconds(newVal);
+      persistence.save(property, this[property]);
     }
   }
 
