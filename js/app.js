@@ -87,7 +87,7 @@ let notify = function() {
     icon: owlImage,
     requireInteraction: true
   });
-  audioBreakStartEl.play();
+  playSound(audioBreakStartEl);
   n.onclick = notificationClickedHandler.bind(n);
 };
 
@@ -100,6 +100,12 @@ let notificationClickedHandler = function() {
   } else {
     startLongBreakAnimation();
     startAnimationClock(settings.longBreakDuration);
+  }
+}
+
+let playSound = function(element) {
+  if (settings.soundEnabled) {
+    element.play();
   }
 }
 
@@ -121,7 +127,7 @@ let stopClockHandler = function() {
     stopBreakAnimation();
     timeElapsed = 0;
   }
-  audioBreakOverEl.play();
+  playSound(audioBreakOverEl);
   startWork();
 }
 
