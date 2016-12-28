@@ -1,10 +1,12 @@
 $app-background: #333333;
-$app-color: #fff;
+$app-color: darken(#fff, 5%);
 $app-font-stack: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
+$settings-width: 330px;
+$settings-color: darken($app-color, 15%);
 $settings-background: darken($app-background, 15%);
+$settings-input-background: darken($app-background, 10%);
 $settings-border: lighten($app-background, 15%);
-$settings-width: 300px;
 
 $owl-main-color: #01bdc8;
 $owl-background-color: #fbfcfc;

@@ -10,16 +10,41 @@
   width: $settings-width;
   padding: 10px;
   z-index: 2;
+  color: $settings-color;
   background-color: $settings-background;
   border-right: 1px solid $settings-border;
   transition: transform 0.5s ease;
 }
 
 .settings-control {
-  margin: 10px 0;
+  margin-bottom: 10px;
 }
 
 .settings-label,
-.settings-input {
+.settings-input-wrapper {
   display: inline-block;
+}
+
+.settings-label {
+  width: 75%;
+  font-size: 1.1em
+}
+
+.settings-input-wrapper {
+  width: 20%;
+}
+
+.settings-input {
+  padding: 5px;
+  font-size: 1em;
+  border-radius: 3px;
+  border: 1px solid $settings-border;
+  color: $settings-color;
+  background: $settings-input-background;
+}
+
+.settings-about {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
 }
