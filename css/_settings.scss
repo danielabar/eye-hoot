@@ -31,10 +31,16 @@
 }
 
 .settings-input-wrapper {
-  width: 20%;
+  width: 15%;
+  margin-left: 2%;
+}
+
+.settings-input-checkbox-wrapper {
+  margin-left: 0;
 }
 
 .settings-input {
+  width: 100%;
   padding: 5px;
   font-size: 1em;
   border-radius: 3px;
