@@ -55,11 +55,11 @@
 }
 
 .settings-form {
-  margin-top: 30px;
+  margin-top: 35px;
 }
 
 .settings-control {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .settings-label,
@@ -94,6 +94,11 @@
 
 .settings-input-error {
   border-color: $settings-error;
+}
+
+.settings-help {
+  font-size: 0.9em;
+  color: $settings-help-color;
 }
 
 .settings-about {
