@@ -1,7 +1,6 @@
 import {persistence} from './persistence';
 import {conversion} from './conversion';
-
-const ERROR_CSS_CLASS = 'settings-input-error';
+import {validation} from './validation';
 
 const eyeExerciseIntervalEl = document.getElementsByName('eyeExerciseInterval')[0];
 const longBreakIntervalEl = document.getElementsByName('longBreakInterval')[0];
@@ -22,7 +21,6 @@ export class Settings {
     this._soundEnabled = true;
   }
 
-  // Nice to have: show check beside field if successfully updated
   _registerEvents() {
     eyeExerciseIntervalEl.addEventListener('blur', () => this._numericChangeHandler(eyeExerciseIntervalEl, '_eyeExerciseInterval'));
     longBreakIntervalEl.addEventListener('blur', () => this._numericChangeHandler(longBreakIntervalEl, '_longBreakInterval'));
@@ -37,21 +35,14 @@ export class Settings {
 
   _numericChangeHandler(element, property) {
     let newVal = element.value;
-    if (newVal !== this[property] && this._isValidNumber(newVal, parseInt(element.min, 10), parseInt(element.max, 10))) {
+    if (newVal !== this[property] &&
+        validation.isValidNumber(newVal, parseInt(element.min, 10), parseInt(element.max, 10))) {
       this[property] = conversion.minutesToSeconds(newVal);
       persistence.save(property, this[property]);
-      if (element.classList.contains(ERROR_CSS_CLASS)) {
-        element.classList.remove(ERROR_CSS_CLASS);
-      }
+      validation.markElementValid(element);
     } else {
-      element.classList.add(ERROR_CSS_CLASS);
+      validation.markElementInvalid(element);
     }
-  }
-
-  _isValidNumber(val, min, max) {
-    let isNumeric = /^(?:[1-9]\d*|0)$/.test(val);
-    let intVal = parseInt(val, 10);
-    return isNumeric && (intVal >= min) && (intVal <= max);
   }
 
   get eyeExerciseInterval() {
