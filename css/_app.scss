@@ -15,6 +15,15 @@ body {
   overflow: hidden;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .message {
   margin-top: 0.9em;
   font-size: 4em;
