@@ -34,12 +34,13 @@ export class Settings {
     longBreakDurationEl.value = this._secondsToMinutes(this._longBreakDuration);
   }
 
-  // TODO validation
   _numericChangeHandler(element, property) {
     let newVal = element.value;
-    if (newVal !== this[property]) {
+    if (newVal !== this[property] && this._isValidNumber(newVal, element.min, element.max)) {
       this[property] = this._minutesToSeconds(newVal);
       persistence.save(property, this[property]);
+    } else {
+      console.error(`_numericChangeHandler: ${newVal} is invalid for ${property}`);
     }
   }
 
@@ -49,6 +50,11 @@ export class Settings {
 
   _minutesToSeconds(val) {
     return val * SECONDS_IN_MINUTE;
+  }
+
+  _isValidNumber(val, min, max) {
+    let isNumeric = /^(?:[1-9]\d*|0)$/.test(val);
+    return isNumeric && (val >= min) && (val <= max);
   }
 
   get eyeExerciseInterval() {
