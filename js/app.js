@@ -12,10 +12,10 @@ let owlSvg;
 let clock;
 let timeElapsed = 0;
 
-let EYE_ANIMATION_INTERVAL = 10;
-let LONG_BREAK_ANIMATION_INTERVAL = DEFAULT_LONG_BREAK_ANIMATION_INTERVAL;
-let WORK_INTERVAL = DEFAULT_WORK_INTERVAL;
-let TIME_TO_LONG_BREAK = DEFAULT_TIME_TO_LONG_BREAK;
+let EYE_EXERCISE_DURATION = DEFAULT_EYE_EXERCISE_DURATION;
+let LONG_BREAK_DURATION = DEFAULT_LONG_BREAK_DURATION;
+let EYE_EXERCISE_INTERVAL = DEFAULT_EYE_EXERCISE_INTERVAL;
+let LONG_BREAK_INTERVAL = DEFAULT_LONG_BREAK_INTERVAL;
 
 const WORK_MESSAGE = 'Time to work';
 
@@ -96,12 +96,12 @@ let notify = function() {
 let notificationClickedHandler = function() {
   window.focus();
   this.close();
-  if (timeElapsed < TIME_TO_LONG_BREAK) {
+  if (timeElapsed < LONG_BREAK_INTERVAL) {
     startAnimation();
-    startAnimationClock(EYE_ANIMATION_INTERVAL);
+    startAnimationClock(EYE_EXERCISE_DURATION);
   } else {
     startLongBreakAnimation();
-    startAnimationClock(LONG_BREAK_ANIMATION_INTERVAL);
+    startAnimationClock(LONG_BREAK_DURATION);
   }
 }
 
@@ -116,9 +116,9 @@ let startAnimationClock = function(interval) {
 }
 
 let stopClockHandler = function() {
-  if (timeElapsed < TIME_TO_LONG_BREAK) {
+  if (timeElapsed < LONG_BREAK_INTERVAL) {
     stopAnimation();
-    timeElapsed = timeElapsed + EYE_ANIMATION_INTERVAL + WORK_INTERVAL;
+    timeElapsed = timeElapsed + EYE_EXERCISE_DURATION + EYE_EXERCISE_INTERVAL;
   } else {
     stopBreakAnimation();
     timeElapsed = 0;
@@ -134,7 +134,7 @@ let startWork = function() {
 };
 
 let startWorkClock = function() {
-  clock = $('.clock').FlipClock(WORK_INTERVAL, {
+  clock = $('.clock').FlipClock(EYE_EXERCISE_INTERVAL, {
     clockFace: 'MinuteCounter',
     countdown: true,
     callbacks: {

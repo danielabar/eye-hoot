@@ -6,9 +6,10 @@ var baseConfig = require('./webpack.config.js');
 
 // environment specific config
 var definePlugin = new webpack.DefinePlugin({
-  DEFAULT_WORK_INTERVAL: "10",
-  DEFAULT_TIME_TO_LONG_BREAK: "20",
-  DEFAULT_LONG_BREAK_ANIMATION_INTERVAL: "15"
+  DEFAULT_EYE_EXERCISE_DURATION: "10",    // 10 seconds
+  DEFAULT_LONG_BREAK_DURATION: "20",      // 20 seconds
+  DEFAULT_EYE_EXERCISE_INTERVAL: "30",    // 30 seconds
+  DEFAULT_LONG_BREAK_INTERVAL: "60"       // 60 seconds
 })
 
 baseConfig.plugins.push(definePlugin);
