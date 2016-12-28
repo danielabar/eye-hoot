@@ -18,9 +18,9 @@ export class Settings {
 
   _init() {
     this._eyeExerciseDuration = DEFAULT_EYE_EXERCISE_DURATION;
-    this._eyeExerciseInterval = persistence.retrieve('_eyeExerciseInterval', DEFAULT_EYE_EXERCISE_INTERVAL);
-    this._longBreakInterval = persistence.retrieve('_longBreakInterval', DEFAULT_LONG_BREAK_INTERVAL);
-    this._longBreakDuration = persistence.retrieve('_longBreakDuration', DEFAULT_LONG_BREAK_DURATION);
+    this._eyeExerciseInterval = conversion.stringToInt(persistence.retrieve('_eyeExerciseInterval', DEFAULT_EYE_EXERCISE_INTERVAL));
+    this._longBreakInterval = conversion.stringToInt(persistence.retrieve('_longBreakInterval', DEFAULT_LONG_BREAK_INTERVAL));
+    this._longBreakDuration = conversion.stringToInt(persistence.retrieve('_longBreakDuration', DEFAULT_LONG_BREAK_DURATION));
     this._soundEnabled = conversion.stringToBoolean(persistence.retrieve('_soundEnabled', DEFAULT_SOUND_ENABLED));
   }
 
@@ -35,7 +35,6 @@ export class Settings {
     eyeExerciseIntervalEl.value = conversion.secondsToMinutes(this._eyeExerciseInterval);
     longBreakIntervalEl.value = conversion.secondsToMinutes(this._longBreakInterval);
     longBreakDurationEl.value = conversion.secondsToMinutes(this._longBreakDuration);
-    console.log(`_populateFields setting checkbox to ${this._soundEnabled}`);
     soundEnabledEl.checked = this._soundEnabled;
   }
 

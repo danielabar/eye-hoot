@@ -12,11 +12,21 @@ let stringToBoolean = function(val) {
   return val === 'true' ? true : false;
 }
 
+let stringToInt = function(val) {
+  let result = parseInt(val, 10);
+  if (!isNaN(result)) {
+    return result;
+  } else {
+    throw new Error('Expected numeric setting');
+  }
+}
+
 // public api
 let conversion =  {
   secondsToMinutes,
   minutesToSeconds,
-  stringToBoolean
+  stringToBoolean,
+  stringToInt
 };
 
 export {conversion};
