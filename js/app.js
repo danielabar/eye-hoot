@@ -1,7 +1,10 @@
 import breakStartAudioFile from '../sounds/tweet.mp3';
 import breakOverAudioFile from '../sounds/ding.mp3';
 import owlImage from '../images/owl.png';
+import {Settings} from './settings';
 import {animationControl} from './animation-control';
+
+let settings = new Settings();
 
 let messageElement;
 let audioBreakStartEl;
@@ -14,7 +17,6 @@ let timeElapsed = 0;
 
 let EYE_EXERCISE_DURATION = DEFAULT_EYE_EXERCISE_DURATION;
 let LONG_BREAK_DURATION = DEFAULT_LONG_BREAK_DURATION;
-let EYE_EXERCISE_INTERVAL = DEFAULT_EYE_EXERCISE_INTERVAL;
 let LONG_BREAK_INTERVAL = DEFAULT_LONG_BREAK_INTERVAL;
 
 const WORK_MESSAGE = 'Time to work';
@@ -118,7 +120,7 @@ let startAnimationClock = function(interval) {
 let stopClockHandler = function() {
   if (timeElapsed < LONG_BREAK_INTERVAL) {
     stopAnimation();
-    timeElapsed = timeElapsed + EYE_EXERCISE_DURATION + EYE_EXERCISE_INTERVAL;
+    timeElapsed = timeElapsed + EYE_EXERCISE_DURATION + settings.eyeExerciseInterval;
   } else {
     stopBreakAnimation();
     timeElapsed = 0;
@@ -134,7 +136,7 @@ let startWork = function() {
 };
 
 let startWorkClock = function() {
-  clock = $('.clock').FlipClock(EYE_EXERCISE_INTERVAL, {
+  clock = $('.clock').FlipClock(settings.eyeExerciseInterval, {
     clockFace: 'MinuteCounter',
     countdown: true,
     callbacks: {
