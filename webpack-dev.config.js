@@ -8,8 +8,8 @@ var baseConfig = require('./webpack.config.js');
 var definePlugin = new webpack.DefinePlugin({
   DEFAULT_EYE_EXERCISE_DURATION: "10",
   DEFAULT_LONG_BREAK_DURATION: "60",
-  DEFAULT_EYE_EXERCISE_INTERVAL: "120",
-  DEFAULT_LONG_BREAK_INTERVAL: "240"
+  DEFAULT_EYE_EXERCISE_INTERVAL: "60",
+  DEFAULT_LONG_BREAK_INTERVAL: "120"
 })
 
 baseConfig.plugins.push(definePlugin);
