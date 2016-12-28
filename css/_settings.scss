@@ -47,6 +47,11 @@
   border: 1px solid $settings-border;
   color: $settings-color;
   background: $settings-input-background;
+  transition: border-color 0.5s ease;
+}
+
+.settings-input-error {
+  border-color: $settings-error;
 }
 
 .settings-about {

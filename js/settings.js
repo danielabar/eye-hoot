@@ -1,6 +1,7 @@
 import {persistence} from './persistence';
 
 const SECONDS_IN_MINUTE = 60;
+const ERROR_CSS_CLASS = 'settings-input-error';
 
 const eyeExerciseIntervalEl = document.getElementsByName('eyeExerciseInterval')[0];
 const longBreakIntervalEl = document.getElementsByName('longBreakInterval')[0];
@@ -36,11 +37,14 @@ export class Settings {
 
   _numericChangeHandler(element, property) {
     let newVal = element.value;
-    if (newVal !== this[property] && this._isValidNumber(newVal, element.min, element.max)) {
+    if (newVal !== this[property] && this._isValidNumber(newVal, parseInt(element.min, 10), parseInt(element.max, 10))) {
       this[property] = this._minutesToSeconds(newVal);
       persistence.save(property, this[property]);
+      if (element.classList.contains(ERROR_CSS_CLASS)) {
+        element.classList.remove(ERROR_CSS_CLASS);
+      }
     } else {
-      console.error(`_numericChangeHandler: ${newVal} is invalid for ${property}`);
+      element.classList.add(ERROR_CSS_CLASS);
     }
   }
 
@@ -54,7 +58,8 @@ export class Settings {
 
   _isValidNumber(val, min, max) {
     let isNumeric = /^(?:[1-9]\d*|0)$/.test(val);
-    return isNumeric && (val >= min) && (val <= max);
+    let intVal = parseInt(val, 10);
+    return isNumeric && (intVal >= min) && (intVal <= max);
   }
 
   get eyeExerciseInterval() {
