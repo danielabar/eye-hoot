@@ -16,6 +16,28 @@
   transition: transform 0.5s ease;
 }
 
+.settings-hidden {
+  transform: translateX(-$settings-width);
+}
+
+.settings-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.close-button {
+  border-radius: 5px;
+  border: 1px solid $settings-border;
+  color: $settings-color;
+  background: $settings-input-background;
+  cursor: pointer;
+}
+
+.settings-form {
+  margin-top: 30px;
+}
+
 .settings-control {
   margin-bottom: 10px;
 }

@@ -4,10 +4,12 @@ import {validation} from './validation';
 
 const DEFAULT_SOUND_ENABLED = 'true';
 
+const containerEl = document.querySelector('.settings-container');
 const eyeExerciseIntervalEl = document.getElementsByName('eyeExerciseInterval')[0];
 const longBreakIntervalEl = document.getElementsByName('longBreakInterval')[0];
 const longBreakDurationEl = document.getElementsByName('longBreakDuration')[0];
 const soundEnabledEl = document.getElementById('soundEnabled');
+const closeSettingsEl = document.getElementById('settingsClose');
 
 export class Settings {
   constructor() {
@@ -29,6 +31,7 @@ export class Settings {
     longBreakIntervalEl.addEventListener('blur', () => this._numericChangeHandler(longBreakIntervalEl, '_longBreakInterval'));
     longBreakDurationEl.addEventListener('blur', () => this._numericChangeHandler(longBreakDurationEl, '_longBreakDuration'));
     soundEnabledEl.addEventListener('change', () => this._booleanChangeHandler(soundEnabledEl, '_soundEnabled'));
+    closeSettingsEl.addEventListener('click', () => this._close());
   }
 
   _populateFields() {
@@ -56,6 +59,10 @@ export class Settings {
       this[property] = newVal;
       persistence.save(property, this[property]);
     }
+  }
+
+  _close() {
+    containerEl.classList.add('settings-hidden');
   }
 
   get eyeExerciseInterval() {
