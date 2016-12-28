@@ -1,6 +1,6 @@
 import {persistence} from './persistence';
+import {conversion} from './conversion';
 
-const SECONDS_IN_MINUTE = 60;
 const ERROR_CSS_CLASS = 'settings-input-error';
 
 const eyeExerciseIntervalEl = document.getElementsByName('eyeExerciseInterval')[0];
@@ -30,15 +30,15 @@ export class Settings {
   }
 
   _populateFields() {
-    eyeExerciseIntervalEl.value = this._secondsToMinutes(this._eyeExerciseInterval);
-    longBreakIntervalEl.value = this._secondsToMinutes(this._longBreakInterval);
-    longBreakDurationEl.value = this._secondsToMinutes(this._longBreakDuration);
+    eyeExerciseIntervalEl.value = conversion.secondsToMinutes(this._eyeExerciseInterval);
+    longBreakIntervalEl.value = conversion.secondsToMinutes(this._longBreakInterval);
+    longBreakDurationEl.value = conversion.secondsToMinutes(this._longBreakDuration);
   }
 
   _numericChangeHandler(element, property) {
     let newVal = element.value;
     if (newVal !== this[property] && this._isValidNumber(newVal, parseInt(element.min, 10), parseInt(element.max, 10))) {
-      this[property] = this._minutesToSeconds(newVal);
+      this[property] = conversion.minutesToSeconds(newVal);
       persistence.save(property, this[property]);
       if (element.classList.contains(ERROR_CSS_CLASS)) {
         element.classList.remove(ERROR_CSS_CLASS);
@@ -46,14 +46,6 @@ export class Settings {
     } else {
       element.classList.add(ERROR_CSS_CLASS);
     }
-  }
-
-  _secondsToMinutes(val) {
-    return val / SECONDS_IN_MINUTE;
-  }
-
-  _minutesToSeconds(val) {
-    return val * SECONDS_IN_MINUTE;
   }
 
   _isValidNumber(val, min, max) {
