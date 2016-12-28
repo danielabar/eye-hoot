@@ -14,9 +14,9 @@ export class Settings {
   _init() {
     this._eyeExerciseInterval = DEFAULT_EYE_EXERCISE_INTERVAL;
     this._longBreakInterval = DEFAULT_LONG_BREAK_INTERVAL;
-    this._longBreakDuration = DEFAULT_LONG_BREAK_DURATION;
     this._eyeExerciseDuration = DEFAULT_EYE_EXERCISE_DURATION;
-    this._sound = true;
+    this._longBreakDuration = DEFAULT_LONG_BREAK_DURATION;
+    this._soundEnabled = true;
 
     eyeExerciseIntervalEl.value = this._eyeExerciseInterval / SECONDS_IN_MINUTE;
   }
@@ -34,5 +34,21 @@ export class Settings {
 
   get eyeExerciseInterval() {
     return this._eyeExerciseInterval;
+  }
+
+  get longBreakInterval() {
+    return this._longBreakInterval;
+  }
+
+  get eyeExerciseDuration() {
+    return this._eyeExerciseDuration;
+  }
+
+  get longBreakDuration() {
+    return this._longBreakDuration;
+  }
+
+  get soundEnabled() {
+    return this._soundEnabled;
   }
 }
