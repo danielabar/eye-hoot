@@ -3,6 +3,7 @@ import {conversion} from './conversion';
 import {validation} from './validation';
 
 const DEFAULT_SOUND_ENABLED = 'true';
+const SETTINGS_HIDDEN_CLASS = 'settings-hidden';
 
 const containerEl = document.querySelector('.settings-container');
 const eyeExerciseIntervalEl = document.getElementsByName('eyeExerciseInterval')[0];
@@ -10,6 +11,7 @@ const longBreakIntervalEl = document.getElementsByName('longBreakInterval')[0];
 const longBreakDurationEl = document.getElementsByName('longBreakDuration')[0];
 const soundEnabledEl = document.getElementById('soundEnabled');
 const closeSettingsEl = document.getElementById('settingsClose');
+const openSettingsEl = document.getElementById('settingsOpen');
 
 export class Settings {
   constructor() {
@@ -32,6 +34,7 @@ export class Settings {
     longBreakDurationEl.addEventListener('blur', () => this._numericChangeHandler(longBreakDurationEl, '_longBreakDuration'));
     soundEnabledEl.addEventListener('change', () => this._booleanChangeHandler(soundEnabledEl, '_soundEnabled'));
     closeSettingsEl.addEventListener('click', () => this._close());
+    openSettingsEl.addEventListener('click', () => this._open());
   }
 
   _populateFields() {
@@ -62,7 +65,11 @@ export class Settings {
   }
 
   _close() {
-    containerEl.classList.add('settings-hidden');
+    containerEl.classList.add(SETTINGS_HIDDEN_CLASS);
+  }
+
+  _open() {
+    containerEl.classList.remove(SETTINGS_HIDDEN_CLASS);
   }
 
   get eyeExerciseInterval() {

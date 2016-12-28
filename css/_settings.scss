@@ -1,5 +1,21 @@
-.settings-button {
+.settings-open {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
 
+.settings-open-button {
+  border-radius: 5px;
+  border: 1px solid $settings-border;
+  color: $settings-color;
+  background: $settings-input-background;
+  font-size: 1.1em;
+  padding: 8px;
+  cursor: pointer;
+  &:hover {
+    color: brighten($settings-color, 25%);
+    background-color: darken($settings-input-background, 25%);
+  }
 }
 
 .settings-container {
@@ -26,12 +42,16 @@
   right: 10px;
 }
 
-.close-button {
+.settings-close-button {
   border-radius: 5px;
   border: 1px solid $settings-border;
   color: $settings-color;
   background: $settings-input-background;
   cursor: pointer;
+  &:hover {
+    color: brighten($settings-color, 25%);
+    background-color: darken($settings-input-background, 25%);
+  }
 }
 
 .settings-form {
