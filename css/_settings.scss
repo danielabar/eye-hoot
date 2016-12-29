@@ -5,17 +5,13 @@
 }
 
 .settings-open-button {
-  border-radius: 5px;
-  border: 1px solid $settings-border;
-  color: $settings-color;
-  background: $settings-input-background;
-  font-size: 1.1em;
-  padding: 8px;
-  cursor: pointer;
-  &:hover {
-    color: brighten($settings-color, 25%);
-    background-color: darken($settings-input-background, 25%);
-  }
+  @include settings-button();
+}
+
+.settings-restore-button {
+  float: right;
+  margin-right: 20px;
+  @include settings-button();
 }
 
 .settings-container {
@@ -56,15 +52,7 @@
 }
 
 .settings-close-button {
-  border-radius: 5px;
-  border: 1px solid $settings-border;
-  color: $settings-color;
-  background: $settings-input-background;
-  cursor: pointer;
-  &:hover {
-    color: brighten($settings-color, 25%);
-    background-color: darken($settings-input-background, 25%);
-  }
+  @include settings-button(0.7em, 5px);
 }
 
 .settings-form {
@@ -105,7 +93,6 @@
 
 .settings-button-wrapper {
   width: 100%;
-  margin-left: 45%;
   margin-top: 25px;
 }
 

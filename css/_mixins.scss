@@ -1,0 +1,13 @@
+@mixin settings-button($fontSize: 1em, $padding: 8px) {
+  border-radius: 5px;
+  border: 1px solid $settings-border;
+  color: $settings-color;
+  background: $settings-input-background;
+  font-size: $fontSize;
+  padding: $padding;
+  cursor: pointer;
+  &:hover {
+    color: brighten($settings-color, 25%);
+    background-color: darken($settings-input-background, 25%);
+  }
+}
