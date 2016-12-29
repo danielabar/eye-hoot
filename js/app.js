@@ -135,6 +135,7 @@ let stopClockHandler = function() {
   if (timeElapsed < settings.longBreakInterval) {
     stopAnimation();
     timeElapsed = timeElapsed + settings.eyeExerciseDuration + settings.eyeExerciseInterval;
+    console.debug(`stopClockHandler: timeElapsed = ${timeElapsed}`);
   } else {
     stopBreakAnimation();
     timeElapsed = 0;

@@ -15,6 +15,7 @@ const soundEnabledEl = document.getElementById('soundEnabled');
 const clockOpacityEl = document.getElementById('clockOpacity');
 const closeSettingsEl = document.getElementById('settingsClose');
 const openSettingsEl = document.getElementById('settingsOpen');
+const restoreSettingsEl = document.getElementById('restoreSettings');
 
 export class Settings {
   constructor() {
@@ -47,6 +48,7 @@ export class Settings {
     // buttons
     closeSettingsEl.addEventListener('click', () => this.close());
     openSettingsEl.addEventListener('click', () => this._open());
+    restoreSettingsEl.addEventListener('click', () => this._restore());
   }
 
   _populateFields() {
@@ -112,6 +114,15 @@ export class Settings {
 
   _open() {
     containerEl.classList.remove(SETTINGS_HIDDEN_CLASS);
+  }
+
+  _restore() {
+    persistence.removeAll();
+    this._init();
+    this._populateFields();
+
+    controller.update('_eyeExerciseInterval', this._eyeExerciseInterval);
+    controller.update('_clockOpacity', this._clockOpacity);
   }
 
   get eyeExerciseInterval() {

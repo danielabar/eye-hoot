@@ -38,10 +38,17 @@ let retrieve = function(key, defaultVal) {
   }
 }
 
+let removeAll = function() {
+  if (localStorageAvailable) {
+    localStorage.clear();
+  }
+}
+
 // public api
 let persistence = {
   save,
-  retrieve
+  retrieve,
+  removeAll
 };
 
 export {persistence};
