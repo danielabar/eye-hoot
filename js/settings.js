@@ -1,6 +1,7 @@
 import {persistence} from './persistence';
 import {conversion} from './conversion';
 import {validation} from './validation';
+import {controller} from './controller';
 
 const DEFAULT_SOUND_ENABLED = 'true';
 const SETTINGS_HIDDEN_CLASS = 'settings-hidden';
@@ -33,7 +34,7 @@ export class Settings {
     longBreakIntervalEl.addEventListener('blur', () => this._numericChangeHandler(longBreakIntervalEl, '_longBreakInterval'));
     longBreakDurationEl.addEventListener('blur', () => this._numericChangeHandler(longBreakDurationEl, '_longBreakDuration'));
     soundEnabledEl.addEventListener('change', () => this._booleanChangeHandler(soundEnabledEl, '_soundEnabled'));
-    closeSettingsEl.addEventListener('click', () => this._close());
+    closeSettingsEl.addEventListener('click', () => this.close());
     openSettingsEl.addEventListener('click', () => this._open());
   }
 
@@ -51,6 +52,7 @@ export class Settings {
       this[property] = conversion.minutesToSeconds(newVal);
       persistence.save(property, this[property]);
       validation.markElementValid(element);
+      controller.update(property);
     } else {
       validation.markElementInvalid(element);
     }
@@ -64,8 +66,10 @@ export class Settings {
     }
   }
 
-  _close() {
-    containerEl.classList.add(SETTINGS_HIDDEN_CLASS);
+  close() {
+    if (!containerEl.classList.contains(SETTINGS_HIDDEN_CLASS)) {
+      containerEl.classList.add(SETTINGS_HIDDEN_CLASS);
+    }
   }
 
   _open() {

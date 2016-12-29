@@ -39,7 +39,7 @@ let retrieve = function(key, defaultVal) {
 }
 
 // public api
-let persistence =  {
+let persistence = {
   save,
   retrieve
 };

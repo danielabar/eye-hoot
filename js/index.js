@@ -1,5 +1,5 @@
 require('../css/styles.scss');
 
-import {start} from './app';
+import {app} from './app';
 
-document.addEventListener('DOMContentLoaded', start);
+document.addEventListener('DOMContentLoaded', app.start);
