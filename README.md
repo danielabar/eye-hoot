@@ -8,7 +8,9 @@ Tweet sound [Creative Commons](https://notificationsounds.com/message-tones/rvrb
 
 Ding sound [Sampling Plus 1.0](http://soundbible.com/1424-Air-Plane-Ding.html)
 
-Original owl image [Clipart Panda](http://www.clipartpanda.com/clipart_images/owl-clipart-post-3-4374931), [Free clip art](http://www.clipartpanda.com/categories/owl-clip-art-free-cute)
+Owl png [Clipart Panda](http://www.clipartpanda.com/clipart_images/owl-clipart-post-3-4374931), [Free clip art](http://www.clipartpanda.com/categories/owl-clip-art-free-cute), which I converted to SVG with [Inkscape](https://inkscape.org/en/), then lots of manual editing to make the paths useful for animation.
+
+Checkmark SVG [Wiki Commons](https://commons.wikimedia.org/wiki/File:Echo_curation_alt_check_mark.svg)
 
 ## TODO
 
