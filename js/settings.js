@@ -47,14 +47,16 @@ export class Settings {
 
   _numericChangeHandler(element, property) {
     let newVal = element.value;
-    if (newVal !== this[property] &&
-        validation.isValidNumber(newVal, parseInt(element.min, 10), parseInt(element.max, 10))) {
-      this[property] = conversion.minutesToSeconds(newVal);
-      persistence.save(property, this[property]);
-      validation.markElementValid(element);
-      controller.update(property);
-    } else {
-      validation.markElementInvalid(element);
+    let currentVal = conversion.secondsToMinutes(this[property]).toString();
+    if (newVal !== currentVal) {
+      if (validation.isValidNumber(newVal, parseInt(element.min, 10), parseInt(element.max, 10))) {
+        this[property] = conversion.minutesToSeconds(newVal);
+        persistence.save(property, this[property]);
+        validation.markElementValid(element);
+        controller.update(property);
+      } else {
+        validation.markElementInvalid(element);
+      }
     }
   }
 
