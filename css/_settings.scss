@@ -86,9 +86,17 @@
   font-size: 1.1em
 }
 
+.settings-label-small {
+  width: 50%;
+}
+
 .settings-input-wrapper {
   width: 15%;
   margin-left: 2%;
+}
+
+.settings-input-range-wrapper {
+  width: 40%;
 }
 
 .settings-input-checkbox-wrapper {

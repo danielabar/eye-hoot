@@ -64,15 +64,24 @@
         <p class="settings-help">(1 - 10)</p>
       </div>
 
-      <!-- sound -->
+      <!-- sound on/off -->
       <div class="settings-control">
         <label class="settings-label" for="soundEnabled">Play sounds</label>
         <div class="settings-input-wrapper settings-input-checkbox-wrapper">
           <input type="checkbox" id="soundEnabled" name="soundEnabled" class="settings-input">
         </div>
       </div>
+
+      <!-- clock opacity -->
+      <div class="settings-control">
+        <label for="clockOpacity" class="settings-label settings-label-small">Clock Opacity</label>
+        <div class="settings-input-wrapper settings-input-range-wrapper">
+          <input id="clockOpacity" name="clockOpacity" type="range" min="0" max="1" step="0.1" />
+        </div>
+      </div>
+
     </form>
-    
+
     <!-- project info -->
     <div class="settings-about">
       <a href="https://github.com/danielabar/eye-hoot" class="settings-link">

@@ -11,6 +11,7 @@ const eyeExerciseIntervalEl = document.getElementsByName('eyeExerciseInterval')[
 const longBreakIntervalEl = document.getElementsByName('longBreakInterval')[0];
 const longBreakDurationEl = document.getElementsByName('longBreakDuration')[0];
 const soundEnabledEl = document.getElementById('soundEnabled');
+const clockOpacityEl = document.getElementById('clockOpacity');
 const closeSettingsEl = document.getElementById('settingsClose');
 const openSettingsEl = document.getElementById('settingsOpen');
 
@@ -27,6 +28,7 @@ export class Settings {
     this._longBreakInterval = conversion.stringToInt(persistence.retrieve('_longBreakInterval', DEFAULT_LONG_BREAK_INTERVAL));
     this._longBreakDuration = conversion.stringToInt(persistence.retrieve('_longBreakDuration', DEFAULT_LONG_BREAK_DURATION));
     this._soundEnabled = conversion.stringToBoolean(persistence.retrieve('_soundEnabled', DEFAULT_SOUND_ENABLED));
+    this._clockOpacity = 1;
   }
 
   _registerEvents() {
@@ -39,6 +41,8 @@ export class Settings {
     longBreakDurationEl.addEventListener('keypress', (evt) => this._keyPressHandler(longBreakDurationEl, '_longBreakDuration', evt));
     // checkboxes
     soundEnabledEl.addEventListener('change', () => this._booleanChangeHandler(soundEnabledEl, '_soundEnabled'));
+    // ranges
+    clockOpacityEl.addEventListener('input', () => this._rangeChangeHandler(clockOpacityEl, '_clockOpacity'))
     // buttons
     closeSettingsEl.addEventListener('click', () => this.close());
     openSettingsEl.addEventListener('click', () => this._open());
@@ -48,6 +52,7 @@ export class Settings {
     eyeExerciseIntervalEl.value = conversion.secondsToMinutes(this._eyeExerciseInterval);
     longBreakIntervalEl.value = conversion.secondsToMinutes(this._longBreakInterval);
     longBreakDurationEl.value = conversion.secondsToMinutes(this._longBreakDuration);
+    clockOpacity.value = this._clockOpacity;
     soundEnabledEl.checked = this._soundEnabled;
   }
 
@@ -90,6 +95,11 @@ export class Settings {
     }
   }
 
+
+  _rangeChangeHandler(element, property) {
+    controller.update(property, element.value);
+  }
+
   close() {
     if (!containerEl.classList.contains(SETTINGS_HIDDEN_CLASS)) {
       containerEl.classList.add(SETTINGS_HIDDEN_CLASS);
@@ -118,5 +128,9 @@ export class Settings {
 
   get soundEnabled() {
     return this._soundEnabled;
+  }
+
+  get clockOpacity() {
+    return this._clockOpacity;
   }
 }
