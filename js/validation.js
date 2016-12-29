@@ -15,10 +15,15 @@ let markElementInvalid = function(element) {
   element.classList.add(ERROR_CSS_CLASS);
 }
 
-let markElementValid = function(element) {
+let clearMarkers = function(element) {
   if (element.classList.contains(ERROR_CSS_CLASS)) {
     element.classList.remove(ERROR_CSS_CLASS);
   }
+}
+
+let markElementValid = function(element) {
+  clearMarkers(element);
+
   // position checkmark
   let inputWrapper = element.parentElement;
   let wrapperWidth = inputWrapper.clientWidth;
@@ -38,14 +43,14 @@ let markElementValid = function(element) {
   setTimeout(() => {
     svgCheckEl.classList.remove('visible');
   }, 2000)
-
 }
 
 // public api
 let validation =  {
   isValidNumber,
   markElementInvalid,
-  markElementValid
+  markElementValid,
+  clearMarkers
 };
 
 export {validation};

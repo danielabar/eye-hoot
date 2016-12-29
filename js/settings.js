@@ -57,6 +57,8 @@ export class Settings {
       } else {
         validation.markElementInvalid(element);
       }
+    } else {
+      validation.clearMarkers(element);
     }
   }
 
