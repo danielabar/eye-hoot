@@ -4,6 +4,7 @@ import {validation} from './validation';
 import {controller} from './controller';
 
 const DEFAULT_SOUND_ENABLED = 'true';
+const DEFAULT_CLOCK_OPACITY = '1';
 const SETTINGS_HIDDEN_CLASS = 'settings-hidden';
 
 const containerEl = document.querySelector('.settings-container');
@@ -28,7 +29,7 @@ export class Settings {
     this._longBreakInterval = conversion.stringToInt(persistence.retrieve('_longBreakInterval', DEFAULT_LONG_BREAK_INTERVAL));
     this._longBreakDuration = conversion.stringToInt(persistence.retrieve('_longBreakDuration', DEFAULT_LONG_BREAK_DURATION));
     this._soundEnabled = conversion.stringToBoolean(persistence.retrieve('_soundEnabled', DEFAULT_SOUND_ENABLED));
-    this._clockOpacity = 1;
+    this._clockOpacity = conversion.stringToFloat(persistence.retrieve('_clockOpacity', DEFAULT_CLOCK_OPACITY));
   }
 
   _registerEvents() {
@@ -97,7 +98,10 @@ export class Settings {
 
 
   _rangeChangeHandler(element, property) {
-    controller.update(property, element.value);
+    let newVal = element.value;
+    controller.update(property, newVal);
+    this[property] = newVal;
+    persistence.save(property, this[property]);
   }
 
   close() {

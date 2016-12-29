@@ -1,5 +1,5 @@
 import {app} from './app';
-import {clock} from './clock';
+import {clockContainer} from './clock-container';
 
 let update = function(key, val) {
   switch(key) {
@@ -7,7 +7,7 @@ let update = function(key, val) {
       app.startWork();
       break;
     case '_clockOpacity':
-      clock.updateOpacity(val);
+      clockContainer.updateOpacity(val);
     default:
       break;
   }

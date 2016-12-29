@@ -5,8 +5,8 @@ let updateOpacity = function(opacity) {
 }
 
 // public api
-let clock = {
+let clockContainer = {
   updateOpacity
 };
 
-export {clock};
+export {clockContainer};

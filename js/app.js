@@ -3,10 +3,12 @@ import breakOverAudioFile from '../sounds/ding.mp3';
 import owlImage from '../images/owl.png';
 import {Settings} from './settings';
 import {animationControl} from './animation-control';
+import {clockContainer} from './clock-container';
 
 const DIM_CSS_CLASS = 'dim';
 
 let settings = new Settings();
+clockContainer.updateOpacity(settings.clockOpacity);
 
 let messageElement;
 let audioBreakStartEl;

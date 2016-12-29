@@ -17,7 +17,16 @@ let stringToInt = function(val) {
   if (!isNaN(result)) {
     return result;
   } else {
-    throw new Error('Expected numeric setting');
+    throw new Error('Expected numeric integer setting');
+  }
+}
+
+let stringToFloat = function(val) {
+  let result = parseFloat(val);
+  if (!isNaN(result)) {
+    return result;
+  } else {
+    throw new Error('Expected numeric float setting');
   }
 }
 
@@ -26,7 +35,8 @@ let conversion =  {
   secondsToMinutes,
   minutesToSeconds,
   stringToBoolean,
-  stringToInt
+  stringToInt,
+  stringToFloat
 };
 
 export {conversion};
