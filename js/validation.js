@@ -31,6 +31,9 @@ let markElementValid = function(element) {
   svgCheckEl.style.top = `${checkTop}px`;
 
   // fade checkmark in and out
+  if (svgCheckEl.classList.contains('visible')) {
+    svgCheckEl.classList.remove('visible');
+  }
   svgCheckEl.classList.add('visible');
   setTimeout(() => {
     svgCheckEl.classList.remove('visible');
