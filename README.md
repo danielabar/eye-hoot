@@ -1,6 +1,18 @@
 # Eye Hoot
 
-A port of [EyeLeo](http://eyeleo.com/overview) for the web, but with an owl.
+Eye Hoot reduces eye strain from computer use by reminding you to do a few quick simple eye exercises every 10 - 15 minutes, and to take a longer break every hour. The eye exercises are demonstrated with an animated owl and the time intervals are configurable.
+
+## Usage
+
+Simply browse to [https://eyehoot.site](https://eyehoot.site) (works best on Chrome) and keep that tab open while doing your work.
+When the notifications come up, click on them and follow along with the owl to do the eye exercises.
+
+Click on the settings button to customize Eye Hoot to your liking.
+
+## Why I built this
+
+Eye Hoot is inspired by [EyeLeo](http://eyeleo.com/overview), which is a desktop app for Windows only.
+I wanted similar features but for the web, with no need to install any software.
 
 ## Attributions
 
@@ -12,12 +24,33 @@ Owl png [Clipart Panda](http://www.clipartpanda.com/clipart_images/owl-clipart-p
 
 Checkmark SVG [Wiki Commons](https://commons.wikimedia.org/wiki/File:Echo_curation_alt_check_mark.svg)
 
-## TODO
+## Development
 
-- [x] Smooth out animations
-- [x] Remove debug buttons
-- [x] Build system (Webpack, ES2015 modules, SASS, rev bundle)
-- [ ] Settings (time between short breaks, time between long breaks)
-- [ ] Add help
-- [ ] Add about, links to source etc
-- [ ] Meta tags for sharing (FB, Twitter, etc)
+After cloning the repo:
+
+```shell
+npm install
+npm start
+```
+
+Then browse to [http://localhost:8080](http://localhost:8080).
+
+To run the optimized (production) bundle:
+
+```shell
+npm run serve-prod
+```
+
+Then browse to [http://localhost:8080](http://localhost:8080).
+
+To build the production bundle:
+
+```shell
+npm run build-prod
+```
+
+The generated files will be on the `/docs` directory.
+
+## License
+
+MIT
