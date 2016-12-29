@@ -30,10 +30,16 @@ export class Settings {
   }
 
   _registerEvents() {
+    // numeric inputs
     eyeExerciseIntervalEl.addEventListener('blur', () => this._numericChangeHandler(eyeExerciseIntervalEl, '_eyeExerciseInterval'));
+    eyeExerciseIntervalEl.addEventListener('keypress', (evt) => this._keyPressHandler(eyeExerciseIntervalEl, '_eyeExerciseInterval', evt));
     longBreakIntervalEl.addEventListener('blur', () => this._numericChangeHandler(longBreakIntervalEl, '_longBreakInterval'));
+    longBreakIntervalEl.addEventListener('keypress', (evt) => this._keyPressHandler(longBreakIntervalEl, '_longBreakInterval', evt));
     longBreakDurationEl.addEventListener('blur', () => this._numericChangeHandler(longBreakDurationEl, '_longBreakDuration'));
+    longBreakDurationEl.addEventListener('keypress', (evt) => this._keyPressHandler(longBreakDurationEl, '_longBreakDuration', evt));
+    // checkboxes
     soundEnabledEl.addEventListener('change', () => this._booleanChangeHandler(soundEnabledEl, '_soundEnabled'));
+    // buttons
     closeSettingsEl.addEventListener('click', () => this.close());
     openSettingsEl.addEventListener('click', () => this._open());
   }
@@ -46,6 +52,7 @@ export class Settings {
   }
 
   _numericChangeHandler(element, property) {
+    let isValid = true;
     let newVal = element.value;
     let currentVal = conversion.secondsToMinutes(this[property]).toString();
     if (newVal !== currentVal) {
@@ -55,10 +62,23 @@ export class Settings {
         validation.markElementValid(element);
         controller.update(property);
       } else {
+        isValid = false;
         validation.markElementInvalid(element);
       }
     } else {
       validation.clearMarkers(element);
+    }
+    return isValid;
+  }
+
+  _keyPressHandler(element, property, evt) {
+    if (evt.keyCode === 13) {
+      let isValid = this._numericChangeHandler(element, property);
+      if (!isValid) {
+        element.focus();
+      } else {
+        element.blur();
+      }
     }
   }
 
