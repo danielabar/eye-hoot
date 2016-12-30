@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="owl.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css" integrity="sha256-MSeNrYhmfZbyTUAhVy7w153T7LFxQfCf/DBDjtbvZdg=" crossorigin="anonymous" />
   <!-- rev'd css bundle injected here -->
-<link href="/styles-fce06d9b26d8076818ac.css" rel="stylesheet"></head>
+<link href="/styles-8181fbcbd0547906b499.css" rel="stylesheet"></head>
 <body>
 
   <!-- open sidebar -->
@@ -25,9 +25,13 @@
       </g>
     </svg>
 
+    <div class="settings-title">
+      Settings
+    </div>
+
     <!-- close sidebar -->
     <div class="settings-close">
-      <button id="settingsClose" class="settings-close-button">X</button>
+      <button id="settingsClose" class="settings-close-button">&#x2715;</button>
     </div>
 
     <!-- settings controls -->
@@ -38,9 +42,9 @@
           Minutes between short breaks
         </label>
         <div class="settings-input-wrapper">
-          <input type="number" name="eyeExerciseInterval" min="5" max="60" class="settings-input">
+          <input type="number" name="eyeExerciseInterval" min="5" max="59" class="settings-input">
         </div>
-        <p class="settings-help">(5 - 60)</p>
+        <p class="settings-help">(5 - 59)</p>
       </div>
 
       <!-- long break interval -->
@@ -49,9 +53,9 @@
           Minutes between long breaks
         </label>
         <div class="settings-input-wrapper">
-          <input type="number" name="longBreakInterval" min="30" max="180" class="settings-input">
+          <input type="number" name="longBreakInterval" min="60" max="180" class="settings-input">
         </div>
-        <p class="settings-help">(30 - 180)</p>
+        <p class="settings-help">(60 - 180)</p>
       </div>
 
       <!-- long break duration -->
@@ -99,7 +103,9 @@
         <svg aria-hidden="true" class="settings-octicon" height="28" version="1.1" viewBox="0 0 16 16" width="28">
           <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
         </svg>
-        <span class="settings-link-label">View project on Github</span>
+      </a>
+      <a href="https://github.com/danielabar/eye-hoot" class="settings-link settings-link-label">
+        View project on Github
       </a>
     </div>
   </section>
@@ -197,12 +203,36 @@
           </g><!--//eyes-->
         </g><!--//own-graphic-->
       </g><!--//owl-container-->
-    </svg>
+    </svg><!--//owl-svg-->
+
+    <!-- window overlay-->
+    <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        class="window-svg"
+        width="600"
+        height="500"
+        viewbox="0 0 500 600">
+      <g class="window-container">
+      	<rect x="59.974" y="40.303" style="fill:#B1DDF7;" width="392.047" height="420.652"/>
+      	<path
+      		style="fill:#F1F1F2;"
+      		d="M42.113,22.439v430.984h35.721V254.185h160.983v199.237h35.721V254.185h159.628v199.237h35.721 V22.439H42.113z M77.834,218.464V58.16h160.983v160.305H77.834V218.464z M274.538,218.464V58.16h159.628v160.305H274.538V218.464z"/>
+      	<rect x="256" y="40.303" style="fill:#9EC6DD;" width="196.029" height="420.652"/>
+      	<path
+      		style="fill:#D8D8D9;"
+      		d="M274.538,453.423V254.185h159.628v199.237h35.721V22.439H256v430.984H274.538z M274.538,218.464 V58.16h159.628v160.305H274.538V218.464z"/>
+      	<rect y="432.351" style="fill:#CBCBCE;" width="512" height="57.21"/>
+      	<rect y="460.956" style="fill:#B7B7B9;" width="512" height="28.605"/>
+      </g>
+    </svg><!--//window-svg-->
+
   </section><!--//wrapper-->
 
   <!-- flipclock.reset() only works with older jquery -->
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js" integrity="sha256-zZFgUYWREnXJDw3PMQASiGmzHVL+VNfcA5eaXhipwag=" crossorigin="anonymous"></script>
   <!-- rev'd js bundle injected here -->
-<script type="text/javascript" src="/bundle-fce06d9b26d8076818ac.js"></script></body>
+<script type="text/javascript" src="/bundle-8181fbcbd0547906b499.js"></script></body>
 </html>
