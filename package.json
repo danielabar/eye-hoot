@@ -4,7 +4,7 @@
   "description": "A web application that regularly reminds you to take short breaks and do eye exercises for your health.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack-dev.config.js --inline --watch -d",
+    "start": "webpack-dev-server --config webpack-dev.config.js --host 0.0.0.0 --inline --watch -d",
     "serve-prod": "webpack-dev-server --config webpack-dev.config.js -p",
     "build-prod": "webpack --config webpack-production.config.js -p -d"
   },
