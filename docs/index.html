@@ -2,17 +2,37 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Eye Hoot reduces eye strain from computer use by reminding you to do a few quick simple eye exercises every 10 - 15 minutes.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Eye Hoot</title>
   <link rel="shortcut icon" href="owl.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css" integrity="sha256-MSeNrYhmfZbyTUAhVy7w153T7LFxQfCf/DBDjtbvZdg=" crossorigin="anonymous" />
-<link href="/styles-379b1839dc30f236f760.css" rel="stylesheet"></head>
+  <!-- rev'd css bundle injected here -->
+<link href="/styles-fce06d9b26d8076818ac.css" rel="stylesheet"></head>
 <body>
 
-  <!-- <button class="settings-button">Settings</button> -->
-  <section class="settings-container">
+  <!-- open sidebar -->
+  <div class="settings-open">
+    <button id="settingsOpen" class="settings-open-button">Settings</button>
+  </div>
 
-    <form class="settings-form">
+  <!-- sidebar -->
+  <section class="settings-container settings-hidden">
+    <!-- checkmark -->
+    <svg class="check-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="96px" height="96px">
+      <g>
+        <path fill="#26A964" d="M49.844,68.325c-1.416,0-2.748-0.554-3.75-1.557L27.523,48.191c-1.003-1.002-1.555-2.334-1.555-3.75   s0.552-2.749,1.555-3.75c1.001-1.001,2.333-1.552,3.75-1.552s2.75,0.551,3.753,1.553l14.019,14.017L82.14,5.504   c0.989-1.468,2.639-2.345,4.412-2.345c1.054,0,2.075,0.312,2.956,0.902c2.424,1.631,3.07,4.934,1.439,7.361L54.25,65.98   c-0.892,1.316-2.312,2.162-3.895,2.314C50.17,68.315,50.01,68.325,49.844,68.325z"/>
+      </g>
+    </svg>
+
+    <!-- close sidebar -->
+    <div class="settings-close">
+      <button id="settingsClose" class="settings-close-button">X</button>
+    </div>
+
+    <!-- settings controls -->
+    <form class="settings-form" novalidate>
+      <!-- short break interval -->
       <div class="settings-control">
         <label for="eyeExerciseInterval" class="settings-label">
           Minutes between short breaks
@@ -20,7 +40,10 @@
         <div class="settings-input-wrapper">
           <input type="number" name="eyeExerciseInterval" min="5" max="60" class="settings-input">
         </div>
+        <p class="settings-help">(5 - 60)</p>
       </div>
+
+      <!-- long break interval -->
       <div class="settings-control">
         <label for="longBreakInterval" class="settings-label">
           Minutes between long breaks
@@ -28,7 +51,10 @@
         <div class="settings-input-wrapper">
           <input type="number" name="longBreakInterval" min="30" max="180" class="settings-input">
         </div>
+        <p class="settings-help">(30 - 180)</p>
       </div>
+
+      <!-- long break duration -->
       <div class="settings-control">
         <label for="longBreakDuration" class="settings-label">
           Long break duration minutes
@@ -36,15 +62,38 @@
         <div class="settings-input-wrapper">
           <input type="number" name="longBreakDuration" min="1" max="10" class="settings-input">
         </div>
+        <p class="settings-help">(1 - 10)</p>
       </div>
+
+      <div class="settings-spacer"></div>
+
+      <!-- sound on/off -->
       <div class="settings-control">
         <label class="settings-label" for="soundEnabled">Play sounds</label>
         <div class="settings-input-wrapper settings-input-checkbox-wrapper">
-          <input type="checkbox" id="soundEnabled" checked value="second_checkbox" class="settings-input">
+          <input type="checkbox" id="soundEnabled" name="soundEnabled" class="settings-input">
+        </div>
+      </div>
+
+      <!-- clock opacity -->
+      <div class="settings-control">
+        <label for="clockOpacity" class="settings-label settings-label-small">Clock Opacity</label>
+        <div class="settings-input-wrapper settings-input-range-wrapper">
+          <input id="clockOpacity" name="clockOpacity" type="range" min="0" max="1" step="0.1" />
+        </div>
+      </div>
+
+      <div class="settings-spacer settings-spacer-small"></div>
+
+      <!-- reset -->
+      <div class="settings-control">
+        <div class="settings-input-wrapper settings-button-wrapper">
+          <input type="button" id="restoreSettings" class="settings-restore-button" value="Restore Defaults"/>
         </div>
       </div>
     </form>
 
+    <!-- project info -->
     <div class="settings-about">
       <a href="https://github.com/danielabar/eye-hoot" class="settings-link">
         <svg aria-hidden="true" class="settings-octicon" height="28" version="1.1" viewBox="0 0 16 16" width="28">
@@ -62,10 +111,11 @@
     <div class="clock"></div>
   </section>
 
+  <!-- messaging -->
   <section class="message"></section>
 
-  <div class="owl-wrapper">
-
+  <!-- main content -->
+  <section class="owl-wrapper">
     <!-- owl graphic -->
     <svg
       xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -148,9 +198,11 @@
         </g><!--//own-graphic-->
       </g><!--//owl-container-->
     </svg>
-  </div><!--//wrapper-->
+  </section><!--//wrapper-->
 
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <!-- flipclock.reset() only works with older jquery -->
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js" integrity="sha256-zZFgUYWREnXJDw3PMQASiGmzHVL+VNfcA5eaXhipwag=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/bundle-379b1839dc30f236f760.js"></script></body>
+  <!-- rev'd js bundle injected here -->
+<script type="text/javascript" src="/bundle-fce06d9b26d8076818ac.js"></script></body>
 </html>
