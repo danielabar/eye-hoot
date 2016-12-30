@@ -2,6 +2,12 @@ $app-background: #333333;
 $app-color: darken(#fff, 5%);
 $app-font-stack: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
+$modal-header-background: #333;
+$modal-title: #eee;
+$modal-color: #888;
+$modal-body-background: #3a3a3a;
+$modal-accent: #399599;
+
 $settings-width: 330px;
 $settings-color: darken($app-color, 15%);
 $settings-help-color: darken($app-color, 20%);
