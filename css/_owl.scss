@@ -5,17 +5,21 @@
   position: relative;
 }
 
-/* http://stackoverflow.com/questions/9622354/make-a-div-center-of-viewport-horizontally-and-vertically/34084294#34084294 */
 .owl-svg {
-  width: calc(100% - 60px);
-  max-height: calc(100% - 60px);
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @include center-position();
   opacity: 1;
   filter: grayscale(0);
   transition: opacity 1s linear, filter 1s linear;
+}
+
+.window-svg {
+  @include center-position();
+  opacity: 0;
+  transition: opacity 1s linear, filter 1s linear;
+}
+
+.window-visible {
+  opacity: 0.9;
 }
 
 .owl-container {
@@ -81,16 +85,20 @@
   animation: to-up-small 0.5s ease, up-down-small 1s ease 0.5s alternate infinite;
 }
 
-.eyes.around {
-  animation: rot 2s linear 0s normal infinite;
+.eyes.around-right {
+  animation: rot-right 2s linear 0s normal infinite;
 }
 
-.left-eye-shine.around {
-  animation: rot-small 2s linear 0s normal infinite;
+.eyes.around-left {
+  animation: rot-left 2s linear 0s normal infinite;
 }
 
-.right-eye-shine.around {
-  animation: rot-small 2s linear 0s normal infinite;
+.left-eye-shine.around-right {
+  animation: rot-small-right 2s linear 0s normal infinite;
+}
+
+.right-eye-shine.around-right {
+  animation: rot-small-right 2s linear 0s normal infinite;
 }
 
 .eyes.blink {

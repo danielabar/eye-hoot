@@ -37,12 +37,18 @@
   transition: opacity 2s ease;
 }
 
-.visible {
-  opacity: 1;
-}
-
 .settings-hidden {
   transform: translateX(-$settings-width);
+}
+
+.settings-title {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  font-size: 1.1em;
+  color: $settings-color;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 .settings-close {
@@ -52,7 +58,7 @@
 }
 
 .settings-close-button {
-  @include settings-button(0.7em, 5px);
+  @include settings-button(0.7em, 5px 8px, 50%);
 }
 
 .settings-form {
@@ -128,6 +134,7 @@
 }
 
 .settings-about {
+  display: flex;
   position: absolute;
   bottom: 20px;
   left: 10px;
@@ -138,6 +145,15 @@
   color: $settings-link-color;
 }
 
+.settings-link-label {
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
 .settings-octicon {
   fill: $settings-link-color;
+}
+
+.visible {
+  opacity: 1;
 }
