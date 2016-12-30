@@ -18,9 +18,26 @@
   transition: opacity 1s linear, filter 1s linear;
 }
 
+// TODO extract common mixin this and owl-svg
+.window-svg {
+  width: calc(100% - 60px);
+  max-height: calc(100% - 60px);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 1s linear, filter 1s linear;
+}
+
 .owl-container {
   perspective: 100px;
   transform: translateX(70px);
+}
+
+.window-container {
+  perspective: 100px;
+  //transform: translateX(430px);
 }
 
 .owl-graphic {
