@@ -18,6 +18,10 @@
   transition: opacity 1s linear, filter 1s linear;
 }
 
+.window-visible {
+  opacity: 0.9;
+}
+
 .owl-container {
   perspective: 100px;
   transform: translateX(70px);

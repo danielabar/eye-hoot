@@ -1,3 +1,4 @@
+const windowSvg = document.querySelector('.window-svg');
 const owlGraphic = document.querySelector('.owl-graphic');
 const eyes = document.querySelector('.eyes');
 const leftEyeShine = document.querySelector('.left-eye-shine');
@@ -31,6 +32,10 @@ let blinkEyes = function() {
   eyes.classList.toggle('blink');
 };
 
+let farFocus = function() {
+  windowSvg.classList.toggle('window-visible');
+}
+
 let longBreak = function() {
   owlGraphic.classList.toggle('wobble');
   leftWing.classList.toggle('flap-left');
@@ -39,12 +44,13 @@ let longBreak = function() {
   leftFoot.classList.toggle('march');
 }
 
-let EYE_ANIMATIONS = [sideToSide, upDown, around, blinkEyes];
+let EYE_ANIMATIONS = [sideToSide, upDown, around, blinkEyes, farFocus];
 let EYE_ANIMATIONS_MESSAGES = [
   'Move your eyes from side to side',
   'Move your eyes up and down',
   'Move your eyes around in a circle',
-  'Open and close your eyes'
+  'Open and close your eyes',
+  'Look out a window or far away object'
 ];
 
 const longBreakAnimationMessage = 'Get up and go for for a walk';

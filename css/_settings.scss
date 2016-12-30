@@ -37,10 +37,6 @@
   transition: opacity 2s ease;
 }
 
-.visible {
-  opacity: 1;
-}
-
 .settings-hidden {
   transform: translateX(-$settings-width);
 }
@@ -140,4 +136,8 @@
 
 .settings-octicon {
   fill: $settings-link-color;
+}
+
+.visible {
+  opacity: 1;
 }
