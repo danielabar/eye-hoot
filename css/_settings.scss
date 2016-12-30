@@ -57,7 +57,9 @@
 
 .settings-form {
   position: relative;
-  margin-top: 35px;
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 1px solid $settings-border;
 }
 
 .settings-control {
@@ -88,7 +90,7 @@
 }
 
 .settings-input-checkbox-wrapper {
-  margin-left: 0;
+  margin-left: 7%;
 }
 
 .settings-button-wrapper {
@@ -114,6 +116,15 @@
 .settings-help {
   font-size: 0.9em;
   color: $settings-help-color;
+}
+
+.settings-spacer {
+  margin: 30px 0;
+  border-bottom: 1px solid $settings-border;
+}
+
+.settings-spacer-small {
+  margin-bottom: 10px;
 }
 
 .settings-about {
