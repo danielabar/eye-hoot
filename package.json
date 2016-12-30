@@ -1,6 +1,6 @@
 {
   "name": "eye-hoot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A web application that regularly reminds you to take short breaks and do eye exercises for your health.",
   "main": "index.js",
   "scripts": {

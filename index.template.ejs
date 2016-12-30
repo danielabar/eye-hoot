@@ -2,24 +2,120 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Eye Hoot reduces eye strain from computer use by reminding you to do a few quick simple eye exercises every 10 - 15 minutes.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Eye Hoot</title>
   <link rel="shortcut icon" href="owl.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css" integrity="sha256-MSeNrYhmfZbyTUAhVy7w153T7LFxQfCf/DBDjtbvZdg=" crossorigin="anonymous" />
+  <!-- rev'd css bundle injected here -->
 </head>
 <body>
 
+  <!-- open sidebar -->
+  <div class="settings-open">
+    <button id="settingsOpen" class="settings-open-button">Settings</button>
+  </div>
+
+  <!-- sidebar -->
+  <section class="settings-container settings-hidden">
+    <!-- checkmark -->
+    <svg class="check-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="96px" height="96px">
+      <g>
+        <path fill="#26A964" d="M49.844,68.325c-1.416,0-2.748-0.554-3.75-1.557L27.523,48.191c-1.003-1.002-1.555-2.334-1.555-3.75   s0.552-2.749,1.555-3.75c1.001-1.001,2.333-1.552,3.75-1.552s2.75,0.551,3.753,1.553l14.019,14.017L82.14,5.504   c0.989-1.468,2.639-2.345,4.412-2.345c1.054,0,2.075,0.312,2.956,0.902c2.424,1.631,3.07,4.934,1.439,7.361L54.25,65.98   c-0.892,1.316-2.312,2.162-3.895,2.314C50.17,68.315,50.01,68.325,49.844,68.325z"/>
+      </g>
+    </svg>
+
+    <!-- close sidebar -->
+    <div class="settings-close">
+      <button id="settingsClose" class="settings-close-button">X</button>
+    </div>
+
+    <!-- settings controls -->
+    <form class="settings-form" novalidate>
+      <!-- short break interval -->
+      <div class="settings-control">
+        <label for="eyeExerciseInterval" class="settings-label">
+          Minutes between short breaks
+        </label>
+        <div class="settings-input-wrapper">
+          <input type="number" name="eyeExerciseInterval" min="5" max="60" class="settings-input">
+        </div>
+        <p class="settings-help">(5 - 60)</p>
+      </div>
+
+      <!-- long break interval -->
+      <div class="settings-control">
+        <label for="longBreakInterval" class="settings-label">
+          Minutes between long breaks
+        </label>
+        <div class="settings-input-wrapper">
+          <input type="number" name="longBreakInterval" min="30" max="180" class="settings-input">
+        </div>
+        <p class="settings-help">(30 - 180)</p>
+      </div>
+
+      <!-- long break duration -->
+      <div class="settings-control">
+        <label for="longBreakDuration" class="settings-label">
+          Long break duration minutes
+        </label>
+        <div class="settings-input-wrapper">
+          <input type="number" name="longBreakDuration" min="1" max="10" class="settings-input">
+        </div>
+        <p class="settings-help">(1 - 10)</p>
+      </div>
+
+      <div class="settings-spacer"></div>
+
+      <!-- sound on/off -->
+      <div class="settings-control">
+        <label class="settings-label" for="soundEnabled">Play sounds</label>
+        <div class="settings-input-wrapper settings-input-checkbox-wrapper">
+          <input type="checkbox" id="soundEnabled" name="soundEnabled" class="settings-input">
+        </div>
+      </div>
+
+      <!-- clock opacity -->
+      <div class="settings-control">
+        <label for="clockOpacity" class="settings-label settings-label-small">Clock Opacity</label>
+        <div class="settings-input-wrapper settings-input-range-wrapper">
+          <input id="clockOpacity" name="clockOpacity" type="range" min="0" max="1" step="0.1" />
+        </div>
+      </div>
+
+      <div class="settings-spacer settings-spacer-small"></div>
+
+      <!-- reset -->
+      <div class="settings-control">
+        <div class="settings-input-wrapper settings-button-wrapper">
+          <input type="button" id="restoreSettings" class="settings-restore-button" value="Restore Defaults"/>
+        </div>
+      </div>
+    </form>
+
+    <!-- project info -->
+    <div class="settings-about">
+      <a href="https://github.com/danielabar/eye-hoot" class="settings-link">
+        <svg aria-hidden="true" class="settings-octicon" height="28" version="1.1" viewBox="0 0 16 16" width="28">
+          <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+        </svg>
+        <span class="settings-link-label">View project on Github</span>
+      </a>
+    </div>
+  </section>
+
   <!-- timer -->
-  <div class="clock-container">
+  <section class="clock-container">
     <audio class="break-start" preload="auto"></audio>
     <audio class="break-over" preload="auto"></audio>
     <div class="clock"></div>
-  </div>
+  </section>
 
-  <div class="message"></div>
+  <!-- messaging -->
+  <section class="message"></section>
 
-  <div class="owl-wrapper">
-
+  <!-- main content -->
+  <section class="owl-wrapper">
     <!-- owl graphic -->
     <svg
       xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -102,9 +198,11 @@
         </g><!--//own-graphic-->
       </g><!--//owl-container-->
     </svg>
-  </div><!--//wrapper-->
+  </section><!--//wrapper-->
 
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <!-- flipclock.reset() only works with older jquery -->
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js" integrity="sha256-zZFgUYWREnXJDw3PMQASiGmzHVL+VNfcA5eaXhipwag=" crossorigin="anonymous"></script>
+  <!-- rev'd js bundle injected here -->
 </body>
 </html>

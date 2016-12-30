@@ -1,7 +1,14 @@
 import breakStartAudioFile from '../sounds/tweet.mp3';
 import breakOverAudioFile from '../sounds/ding.mp3';
 import owlImage from '../images/owl.png';
+import {Settings} from './settings';
 import {animationControl} from './animation-control';
+import {clockContainer} from './clock-container';
+
+const DIM_CSS_CLASS = 'dim';
+
+let settings = new Settings();
+clockContainer.updateOpacity(settings.clockOpacity);
 
 let messageElement;
 let audioBreakStartEl;
@@ -12,20 +19,15 @@ let owlSvg;
 let clock;
 let timeElapsed = 0;
 
-let EYE_ANIMATION_INTERVAL = 10;
-let LONG_BREAK_ANIMATION_INTERVAL = DEFAULT_LONG_BREAK_ANIMATION_INTERVAL;
-let WORK_INTERVAL = DEFAULT_WORK_INTERVAL;
-let TIME_TO_LONG_BREAK = DEFAULT_TIME_TO_LONG_BREAK;
+const WORK_MESSAGE = 'Leave this running...';
 
-const WORK_MESSAGE = 'Time to work';
-
-export function start() {
+let start = function() {
   findElements();
   requestPermission();
 };
 
 let handleNotificationDenied = function() {
-  dimBrighten();
+  dim();
   messageElement.innerHTML = 'Please allow notifications to use Eye Hoot.';
 }
 
@@ -58,13 +60,20 @@ let updateMessage = function(message) {
   messageElement.innerHTML = message;
 };
 
-let dimBrighten = function() {
-  owlSvg.classList.toggle('dim');
-  messageElement.classList.toggle('dim');
+let dim = function() {
+  [owlSvg, messageElement].forEach(el => el.classList.add(DIM_CSS_CLASS));
+}
+
+let brighten = function() {
+  [owlSvg, messageElement].forEach(el => {
+    if (el.classList.contains(DIM_CSS_CLASS)) {
+      el.classList.remove(DIM_CSS_CLASS);
+    }
+  });
 }
 
 let startAnimation = function() {
-  dimBrighten();
+  brighten();
   animationControl.playAnimation();
   updateMessage(animationControl.getAnimationMessage());
 };
@@ -74,7 +83,7 @@ let stopAnimation = function() {
 };
 
 let startLongBreakAnimation = function() {
-  dimBrighten();
+  brighten();
   animationControl.startStopLongBreakAnimation();
   updateMessage(animationControl.longBreakAnimationMessage);
 };
@@ -89,19 +98,26 @@ let notify = function() {
     icon: owlImage,
     requireInteraction: true
   });
-  audioBreakStartEl.play();
+  playSound(audioBreakStartEl);
   n.onclick = notificationClickedHandler.bind(n);
 };
 
 let notificationClickedHandler = function() {
   window.focus();
   this.close();
-  if (timeElapsed < TIME_TO_LONG_BREAK) {
+  settings.close();
+  if (timeElapsed < settings.longBreakInterval) {
     startAnimation();
-    startAnimationClock(EYE_ANIMATION_INTERVAL);
+    startAnimationClock(settings.eyeExerciseDuration);
   } else {
     startLongBreakAnimation();
-    startAnimationClock(LONG_BREAK_ANIMATION_INTERVAL);
+    startAnimationClock(settings.longBreakDuration);
+  }
+}
+
+let playSound = function(element) {
+  if (settings.soundEnabled) {
+    element.play();
   }
 }
 
@@ -116,25 +132,29 @@ let startAnimationClock = function(interval) {
 }
 
 let stopClockHandler = function() {
-  if (timeElapsed < TIME_TO_LONG_BREAK) {
+  if (timeElapsed < settings.longBreakInterval) {
     stopAnimation();
-    timeElapsed = timeElapsed + EYE_ANIMATION_INTERVAL + WORK_INTERVAL;
+    timeElapsed = timeElapsed + settings.eyeExerciseDuration + settings.eyeExerciseInterval;
+    console.debug(`stopClockHandler: timeElapsed = ${timeElapsed}`);
   } else {
     stopBreakAnimation();
     timeElapsed = 0;
   }
-  audioBreakOverEl.play();
+  playSound(audioBreakOverEl);
   startWork();
 }
 
 let startWork = function() {
   updateMessage(WORK_MESSAGE);
-  dimBrighten();
+  dim();
   startWorkClock();
 };
 
 let startWorkClock = function() {
-  clock = $('.clock').FlipClock(WORK_INTERVAL, {
+  if (clock) {
+    clock.reset();  // clear old callbacks
+  }
+  clock = $('.clock').FlipClock(settings.eyeExerciseInterval, {
     clockFace: 'MinuteCounter',
     countdown: true,
     callbacks: {
@@ -144,3 +164,11 @@ let startWorkClock = function() {
     }
   });
 }
+
+// public api
+let app = {
+  start,
+  startWork
+};
+
+export {app};
