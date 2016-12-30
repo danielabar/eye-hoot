@@ -90,7 +90,7 @@
 }
 
 /* https://gist.github.com/LeaVerou/1760283/593fa8bf024ccdddf2fe67826aece0b420c9d60e */
-@keyframes rot {
+@keyframes rot-right {
 	0% {
 		transform: rotate(0deg)
 		           translate(-5%)
@@ -103,7 +103,20 @@
 	}
 }
 
-@keyframes rot-small {
+@keyframes rot-left {
+	0% {
+		transform: rotate(360deg)
+		           translate(-5%)
+		           rotate(-360deg);
+	}
+	100% {
+		transform: rotate(0deg)
+		           translate(-5%)
+		           rotate(0deg);
+	}
+}
+
+@keyframes rot-small-right {
 	0% {
 		transform: rotate(0deg)
 		           translate(-30%)

@@ -85,16 +85,20 @@
   animation: to-up-small 0.5s ease, up-down-small 1s ease 0.5s alternate infinite;
 }
 
-.eyes.around {
-  animation: rot 2s linear 0s normal infinite;
+.eyes.around-right {
+  animation: rot-right 2s linear 0s normal infinite;
 }
 
-.left-eye-shine.around {
-  animation: rot-small 2s linear 0s normal infinite;
+.eyes.around-left {
+  animation: rot-left 2s linear 0s normal infinite;
 }
 
-.right-eye-shine.around {
-  animation: rot-small 2s linear 0s normal infinite;
+.left-eye-shine.around-right {
+  animation: rot-small-right 2s linear 0s normal infinite;
+}
+
+.right-eye-shine.around-right {
+  animation: rot-small-right 2s linear 0s normal infinite;
 }
 
 .eyes.blink {
