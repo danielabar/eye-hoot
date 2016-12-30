@@ -3,9 +3,10 @@ import {controller} from './controller';
 const modalEl = document.querySelector('#modal');
 const modalOverlayEl = document.querySelector('#modalOverlay');
 const modalCloseEl = document.querySelector('#modalClose');
-// const openButton = document.querySelector('#open-button');
+const modalStartEl = document.querySelector('#modalStart');
 
 modalCloseEl.addEventListener('click', () => close());
+modalStartEl.addEventListener('click', () => close());
 
 let open = function() {
   modalEl.classList.toggle('closed');
