@@ -1,6 +1,8 @@
 # Eye Hoot
 
-Eye Hoot reduces eye strain from computer use by reminding you to do a few quick simple eye exercises every 10 - 15 minutes, and to take a longer break every hour. The eye exercises are demonstrated with an animated owl and the time intervals are configurable.
+![Owl](images/owl-small.png "Owl")
+
+Eye Hoot reduces eye strain from computer use by reminding you to do a few quick and simple eye exercises every 10 - 15 minutes, and to take a longer break every hour. The eye exercises are demonstrated with an animated owl and the time intervals are configurable.
 
 ## Usage
 
