@@ -23,11 +23,11 @@ let timeElapsed = 0;
 const WORK_MESSAGE = 'Leave this running...';
 
 let start = function() {
-  modal.open();
+  findElements();
+  modal.show();
 };
 
 let startContinue = function() {
-  findElements();
   requestPermission();
 };
 
