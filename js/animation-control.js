@@ -53,11 +53,10 @@ let longBreak = function() {
   leftFoot.classList.toggle('march');
 }
 
-// temporarily put coverEyes first for debugging
 let EYE_ANIMATIONS = [
-  coverEyes,
   sideToSide,
   aroundLeft,
+  coverEyes,
   upDown,
   aroundRight,
   blinkEyes,
@@ -65,9 +64,9 @@ let EYE_ANIMATIONS = [
 ];
 
 let EYE_ANIMATIONS_MESSAGES = [
-  'Cover your eyes',
   'Move your eyes from side to side',
   'Move your eyes around to the left',
+  'Cover your eyes',
   'Move your eyes up and down',
   'Move your eyes around to the right',
   'Open and close your eyes',
