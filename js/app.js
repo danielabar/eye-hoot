@@ -97,9 +97,9 @@ let stopBreakAnimation = function() {
   animationControl.startStopLongBreakAnimation();
 };
 
-let notify = function() {
-  let n = new Notification('Eye hoot', {
-    body: 'Time for a break!',
+let notify = function(message) {
+  let n = new Notification('Eye Hoot', {
+    body: message,
     icon: owlImage,
     requireInteraction: true
   });
@@ -131,12 +131,12 @@ let startAnimationClock = function(interval) {
     clockFace: 'MinuteCounter',
     countdown: true,
     callbacks: {
-      stop: stopClockHandler
+      stop: stopAnimationClockHandler
     }
   });
 }
 
-let stopClockHandler = function() {
+let stopAnimationClockHandler = function() {
   if (timeElapsed < settings.longBreakInterval) {
     stopAnimation();
     timeElapsed = timeElapsed + settings.eyeExerciseDuration + settings.eyeExerciseInterval;
@@ -163,11 +163,15 @@ let startWorkClock = function() {
     clockFace: 'MinuteCounter',
     countdown: true,
     callbacks: {
-      stop: function() {
-        notify();
-      }
+      stop: stopWorkClockHandler
     }
   });
+}
+
+let stopWorkClockHandler = function() {
+  let notifyBody = timeElapsed < settings.longBreakInterval ?
+    'Time for a short break' : 'Time for a long break';
+  notify(notifyBody);
 }
 
 // public api
