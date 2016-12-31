@@ -22,3 +22,10 @@ $owl-background-color: #fbfcfc;
 $owl-accent-color: #ea9f4b;
 $owl-extremities-color: #967643;
 $owl-dark-color: #000505;
+
+$z-layers: (
+  "sidebar":          2,
+  "modalClose":       3,
+  "modalOverlay":     4,
+  "modal":            5
+);

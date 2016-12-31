@@ -7,7 +7,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba($settings-background, .9);
-  z-index: 1000;
+  z-index: z("modalOverlay");
 }
 
 .modal {
@@ -28,7 +28,7 @@
 
   box-shadow: 0 5px 15px rgba(0,0,0,.5);
 
-  z-index: 1010;
+  z-index: z("modal");
 }
 
 .modal-header {
@@ -90,9 +90,7 @@
   top: 10px;
   right: 10px;
   @include settings-button(1.1em, 5px 8px, 50%);
-
-  /* don't need to go crazy with z-index here, just sits over .modal-guts */
-  z-index: 1;
+  z-index: z("modalClose");
 }
 
 .closed {

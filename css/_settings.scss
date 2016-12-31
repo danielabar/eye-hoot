@@ -21,7 +21,7 @@
   height: 100%;
   width: $settings-width;
   padding: 10px;
-  z-index: 2;
+  z-index: z("sidebar");
   color: $settings-color;
   background-color: $settings-background;
   border-right: 1px solid $settings-border;
