@@ -1,0 +1,15 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+// adjustments needed to make iconmoon svg fonts align with text in buttons
+.icon-button {
+  margin-right: 1px;
+  margin-bottom: 4px;
+}
