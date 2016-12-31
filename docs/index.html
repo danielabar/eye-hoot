@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="owl.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css" integrity="sha256-MSeNrYhmfZbyTUAhVy7w153T7LFxQfCf/DBDjtbvZdg=" crossorigin="anonymous" />
   <!-- rev'd css bundle injected here -->
-<link href="/styles-8181fbcbd0547906b499.css" rel="stylesheet"></head>
+<link href="/styles-4c171a6ee25ff64db202.css" rel="stylesheet"></head>
 <body>
 
   <!-- open sidebar -->
@@ -118,7 +118,7 @@
   </section>
 
   <!-- messaging -->
-  <section class="message"></section>
+  <section class="message">Leave this running...</section>
 
   <!-- main content -->
   <section class="owl-wrapper">
@@ -230,9 +230,38 @@
 
   </section><!--//wrapper-->
 
+  <!-- intro modal -->
+  <div class="modal closed" id="modal">
+    <button id="modalClose" class="modal-close">&#x2715;</button>
+    <div class="modal-header">
+      <h1 class="modal-title">Welcome to Eye Hoot</h1>
+    </div>
+    <div class="modal-body">
+      <p class="modal-section">
+        <img id="modalLogo" alt="owl" width="90px" class="text-wrap">
+        Eye Hoot reduces eye strain from computer use by reminding you to do a few easy eye exercises every 10 - 15 minutes.
+      </p>
+      <p class="modal-section">
+        Simply keep this tab open while you do your work.
+      </p>
+      <p class="modal-section">
+        When you receive a notification, click on it and follow along with the owl to do the eye exercises.
+      </p>
+      <div class="modal-actions">
+        <button id="modalStart" class="modal-start-button accent-button">Let's get started</button>
+      </div>
+      <!-- <p>
+        Don't show me again checkbox...
+      </p> -->
+    </div>
+  </div>
+
+  <!-- modal overlay -->
+  <div class="modal-overlay closed" id="modalOverlay"></div>
+
   <!-- flipclock.reset() only works with older jquery -->
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js" integrity="sha256-zZFgUYWREnXJDw3PMQASiGmzHVL+VNfcA5eaXhipwag=" crossorigin="anonymous"></script>
   <!-- rev'd js bundle injected here -->
-<script type="text/javascript" src="/bundle-8181fbcbd0547906b499.js"></script></body>
+<script type="text/javascript" src="/bundle-4c171a6ee25ff64db202.js"></script></body>
 </html>
