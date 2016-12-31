@@ -18,7 +18,7 @@
 
   width: 800px;
   max-width: 100%;
-  height: 600px;
+  height: 500px;
   max-height: 100%;
 
   background-color: $modal-body-background;
@@ -63,7 +63,13 @@
   margin-bottom: 15px;
 }
 
+.text-wrap {
+  float: left;
+  margin-right: 15px;
+}
+
 .modal-actions {
+  margin-top: 40px;
   text-align: center;
 }
 
