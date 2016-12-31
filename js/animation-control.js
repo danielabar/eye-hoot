@@ -40,6 +40,11 @@ let farFocus = function() {
   windowSvg.classList.toggle('window-visible');
 }
 
+let coverEyes = function() {
+  rightWing.classList.toggle('forward-up');
+  leftWing.classList.toggle('forward-up');
+}
+
 let longBreak = function() {
   owlGraphic.classList.toggle('wobble');
   leftWing.classList.toggle('flap-left');
@@ -48,16 +53,19 @@ let longBreak = function() {
   leftFoot.classList.toggle('march');
 }
 
+// temporarily put coverEyes first for debugging
 let EYE_ANIMATIONS = [
+  coverEyes,
   sideToSide,
   aroundLeft,
-  upDown, 
+  upDown,
   aroundRight,
   blinkEyes,
   farFocus
 ];
 
 let EYE_ANIMATIONS_MESSAGES = [
+  'Cover your eyes',
   'Move your eyes from side to side',
   'Move your eyes around to the left',
   'Move your eyes up and down',
