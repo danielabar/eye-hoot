@@ -42,11 +42,11 @@ module.exports = {
         exclude: /node_modules/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?sourceMap')
       },
-      // media
+      // media, DataUrl if file is smaller than 15kb
       {
         test: /\.(png|jpg|mp3)$/,
         exclude: /node_modules/,
-        loader: 'url-loader'
+        loader: 'url-loader?limit=15000'
       }
     ]
   },

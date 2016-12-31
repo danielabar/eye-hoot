@@ -4,6 +4,7 @@ import owlImage from '../images/owl.png';
 import {Settings} from './settings';
 import {animationControl} from './animation-control';
 import {clockContainer} from './clock-container';
+import {modal} from './modal';
 
 const DIM_CSS_CLASS = 'dim';
 
@@ -23,6 +24,10 @@ const WORK_MESSAGE = 'Leave this running...';
 
 let start = function() {
   findElements();
+  modal.show();
+};
+
+let startContinue = function() {
   requestPermission();
 };
 
@@ -168,6 +173,7 @@ let startWorkClock = function() {
 // public api
 let app = {
   start,
+  startContinue,
   startWork
 };
 

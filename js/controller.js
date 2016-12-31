@@ -3,6 +3,9 @@ import {clockContainer} from './clock-container';
 
 let update = function(key, val) {
   switch(key) {
+    case 'introModalClosed':
+      app.startContinue();
+      break;
     case '_eyeExerciseInterval':
       app.startWork();
       break;

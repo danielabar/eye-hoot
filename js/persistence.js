@@ -11,23 +11,23 @@ let storageAvailable = function(type) {
 	catch(e) {
 		return false;
 	}
-}
+};
 
 let localStorageAvailable = storageAvailable('localStorage');
 
 let saveItem = function(key, value) {
   localStorage.setItem(`${APP_KEY}-${key}`, value);
-}
+};
 
 let save = function(key, value) {
   if (localStorageAvailable) {
     saveItem(key, value);
   }
-}
+};
 
 let retrieveItem = function(key) {
   return localStorage.getItem(`${APP_KEY}-${key}`);
-}
+};
 
 let retrieve = function(key, defaultVal) {
   if (localStorageAvailable) {
@@ -36,19 +36,25 @@ let retrieve = function(key, defaultVal) {
   } else {
     return defaultVal;
   }
-}
+};
 
 let removeAll = function() {
   if (localStorageAvailable) {
     localStorage.clear();
   }
-}
+};
+
+let exists = function(key) {
+  let result = retrieveItem(key);
+  return result == undefined ? false : true;
+};
 
 // public api
 let persistence = {
   save,
   retrieve,
-  removeAll
+  removeAll,
+  exists
 };
 
 export {persistence};

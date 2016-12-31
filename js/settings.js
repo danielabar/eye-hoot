@@ -48,7 +48,7 @@ export class Settings {
     // buttons
     closeSettingsEl.addEventListener('click', () => this.close());
     openSettingsEl.addEventListener('click', () => this._open());
-    restoreSettingsEl.addEventListener('click', () => this._restore());
+    restoreSettingsEl.addEventListener('click', (evt) => this._restore(evt));
   }
 
   _populateFields() {
@@ -116,7 +116,9 @@ export class Settings {
     containerEl.classList.remove(SETTINGS_HIDDEN_CLASS);
   }
 
-  _restore() {
+  _restore(evt) {
+    evt.preventDefault();
+    
     persistence.removeAll();
     this._init();
     this._populateFields();
