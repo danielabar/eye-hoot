@@ -9,7 +9,11 @@ var cleanPlugin = new CleanWebpackPlugin(['docs'], {
   root: path.resolve('./'),
   verbose: true,
   dry: false,
-  exclude: ['CNAME', 'owl.ico']
+  exclude: [
+    'CNAME',
+    'owl.ico',
+    'owl-small.png'
+  ]
 });
 
 // environment specific config
