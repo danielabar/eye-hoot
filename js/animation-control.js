@@ -13,6 +13,12 @@ let animationIndex = 0;
 let init = function() {
   if (typeof InstallTrigger !== 'undefined') {
     document.body.classList.add('ff');
+
+    // eyes transform-origin 50% 50%
+    let eyesBbox = eyes.getBBox();
+    let transformOriginX = eyesBbox.x + (eyesBbox.width / 2);
+    let transformOriginY = eyesBbox.y + (eyesBbox.height / 2);
+    eyes.style['transform-origin'] = `${transformOriginX}px ${transformOriginY}px`;
   }
 }
 
