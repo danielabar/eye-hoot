@@ -15,6 +15,12 @@ let init = function() {
   if (typeof InstallTrigger !== 'undefined') {
     document.body.classList.add('ff');
 
+    // owl-graphic: transform-origin: center bottom
+    const owlGraphicBbox = owlGraphic.getBBox();
+    const owlGraphicToX = owlGraphicBbox.x + (owlGraphicBbox.width / 2);
+    const owlGraphicToY = owlGraphicBbox.y + owlGraphicBbox.height;
+    owlGraphic.style['transform-origin'] = `${owlGraphicToX}px ${owlGraphicToY}px`;
+
     // eyes transform-origin: 50% 50%
     const eyesBbox = eyes.getBBox();
     const eyesToX = eyesBbox.x + (eyesBbox.width / 2);
