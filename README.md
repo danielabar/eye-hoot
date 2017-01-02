@@ -6,7 +6,7 @@ Eye Hoot reduces eye strain from computer use by reminding you to do a few quick
 
 ## Usage
 
-Simply browse to [https://eyehoot.site](https://eyehoot.site) (works best on Chrome) and keep that tab open while doing your work.
+Simply browse to [https://eyehoot.site](https://eyehoot.site) (tested with Chrome, Firefox and Safari) and keep that tab open while doing your work.
 When the notifications come up, click on them and follow along with the owl to do the eye exercises.
 
 Click on the settings button to customize Eye Hoot to your liking.
