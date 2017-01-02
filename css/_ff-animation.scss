@@ -15,7 +15,7 @@
     transform: translateX(3%);
   }
 }
-//
+
 @keyframes ff-to-side-small {
   0% {
     transform: translateX(0);
@@ -106,5 +106,18 @@
 		transform: rotate(360deg)
 		           translate(-0.5%)
 		           rotate(-360deg);
+	}
+}
+
+@keyframes ff-rot-small-left {
+	0% {
+		transform: rotate(360deg)
+		           translate(-0.5%)
+		           rotate(-360deg);
+	}
+	100% {
+		transform: rotate(0deg)
+		           translate(-0.5%)
+		           rotate(0deg);
 	}
 }

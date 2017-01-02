@@ -69,6 +69,8 @@ let aroundRight = function() {
 
 let aroundLeft = function() {
   eyes.classList.toggle('around-left');
+  leftEyeShine.classList.toggle('around-left');
+  rightEyeShine.classList.toggle('around-left');
 }
 
 let blinkEyes = function() {
