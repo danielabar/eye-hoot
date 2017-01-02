@@ -148,3 +148,46 @@
 .left-foot.march {
   animation: march 0.75s ease 0.75s alternate infinite;
 }
+
+.ff {
+  .eyes.side-to-side {
+    animation: ff-to-side 0.5s ease, ff-side-to-side 1s ease 0.5s alternate infinite;
+  }
+
+  .left-eye-shine.side-to-side {
+    animation: ff-to-side-small 0.5s ease, ff-side-to-side-small 1s ease 0.5s alternate infinite;
+  }
+
+  .right-eye-shine.side-to-side {
+    animation: ff-to-side-small 0.5s ease, ff-side-to-side-small 1s ease 0.5s alternate infinite;
+  }
+
+  .eyes.up-down {
+    animation: ff-to-up 0.5s ease, ff-up-down 1s ease 0.5s alternate infinite;
+  }
+
+  .left-eye-shine.up-down {
+    animation: ff-to-up-small 0.5s ease, ff-up-down-small 1s ease 0.5s alternate infinite;
+  }
+
+  .right-eye-shine.up-down {
+    animation: ff-to-up-small 0.5s ease, ff-up-down-small 1s ease 0.5s alternate infinite;
+  }
+
+  .eyes.around-right {
+    animation: ff-rot-right 2s linear 0s normal infinite;
+  }
+
+  .eyes.around-left {
+    animation: ff-rot-left 2s linear 0s normal infinite;
+  }
+
+  .left-eye-shine.around-right {
+    animation: ff-rot-small-right 2s linear 0s normal infinite;
+  }
+
+  .right-eye-shine.around-right {
+    animation: ff-rot-small-right 2s linear 0s normal infinite;
+  }
+
+}

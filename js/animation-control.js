@@ -10,6 +10,12 @@ const rightFoot = document.querySelector('.right-foot');
 
 let animationIndex = 0;
 
+let init = function() {
+  if (typeof InstallTrigger !== 'undefined') {
+    document.body.classList.add('ff');
+  }
+}
+
 let sideToSide = function() {
   eyes.classList.toggle('side-to-side');
   leftEyeShine.classList.toggle('side-to-side');
@@ -100,5 +106,7 @@ let animationControl =  {
   startStopLongBreakAnimation,
   longBreakAnimationMessage
 };
+
+init();
 
 export {animationControl};
