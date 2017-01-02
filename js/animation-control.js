@@ -5,10 +5,49 @@ const leftEyeShine = document.querySelector('.left-eye-shine');
 const rightEyeShine = document.querySelector('.right-eye-shine');
 const leftWing = document.querySelector('.left-wing');
 const rightWing = document.querySelector('.right-wing');
+const foot = document.querySelectorAll('.foot');
 const leftFoot = document.querySelector('.left-foot');
 const rightFoot = document.querySelector('.right-foot');
 
 let animationIndex = 0;
+
+let init = function() {
+  if (typeof InstallTrigger !== 'undefined') {
+    document.body.classList.add('ff');
+
+    // owl-graphic: transform-origin: center bottom
+    const owlGraphicBbox = owlGraphic.getBBox();
+    const owlGraphicToX = owlGraphicBbox.x + (owlGraphicBbox.width / 2);
+    const owlGraphicToY = owlGraphicBbox.y + owlGraphicBbox.height;
+    owlGraphic.style['transform-origin'] = `${owlGraphicToX}px ${owlGraphicToY}px`;
+
+    // eyes transform-origin: 50% 50%
+    const eyesBbox = eyes.getBBox();
+    const eyesToX = eyesBbox.x + (eyesBbox.width / 2);
+    const eyesToY = eyesBbox.y + (eyesBbox.height / 2);
+    eyes.style['transform-origin'] = `${eyesToX}px ${eyesToY}px`;
+
+    // left-wing transform-origin: right top
+    const leftWingBbox = leftWing.getBBox();
+    const leftWingToX = leftWingBbox.x + leftWingBbox.width;
+    const leftWingToY = leftWingBbox.y;
+    leftWing.style['transform-origin'] = `${leftWingToX}px ${leftWingToY}px`;
+
+    // right-wing transform-origin: left top
+    const rightWingBbox = rightWing.getBBox();
+    const rightWingToX = rightWingBbox.x;
+    const rightWingToY = rightWingBbox.y;
+    rightWing.style['transform-origin'] = `${rightWingToX}px ${rightWingToY}px`;
+
+    // foot transform-origin: center top
+    foot.forEach(footEl => {
+      let footBbox = footEl.getBBox();
+      let footToX = footBbox.x + (footBbox.width / 2);
+      let footToY = footBbox.y;
+      footEl.style['transform-origin'] = `${footToX}px ${footToY}px`;
+    });
+  }
+}
 
 let sideToSide = function() {
   eyes.classList.toggle('side-to-side');
@@ -30,6 +69,8 @@ let aroundRight = function() {
 
 let aroundLeft = function() {
   eyes.classList.toggle('around-left');
+  leftEyeShine.classList.toggle('around-left');
+  rightEyeShine.classList.toggle('around-left');
 }
 
 let blinkEyes = function() {
@@ -100,5 +141,7 @@ let animationControl =  {
   startStopLongBreakAnimation,
   longBreakAnimationMessage
 };
+
+init();
 
 export {animationControl};
