@@ -8,7 +8,6 @@
 .owl-svg {
   @include center-position();
   opacity: 1;
-  filter: grayscale(0);
   transition: opacity 1s linear, filter 1s linear;
 }
 
@@ -29,7 +28,6 @@
 
 .owl-graphic {
   transform-origin: center bottom;
-  filter: grayscale(100%);
 }
 
 .owl-body,
