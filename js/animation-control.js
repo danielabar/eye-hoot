@@ -5,7 +5,7 @@ const leftEyeShine = document.querySelector('.left-eye-shine');
 const rightEyeShine = document.querySelector('.right-eye-shine');
 const leftWing = document.querySelector('.left-wing');
 const rightWing = document.querySelector('.right-wing');
-const foot = document.querySelectorAll('.foot');
+const feet = document.querySelectorAll('.foot');
 const leftFoot = document.querySelector('.left-foot');
 const rightFoot = document.querySelector('.right-foot');
 
@@ -40,12 +40,13 @@ let init = function() {
     rightWing.style['transform-origin'] = `${rightWingToX}px ${rightWingToY}px`;
 
     // foot transform-origin: center top
-    foot.forEach(footEl => {
+    for (let i = 0; i < feet.length; i++) {
+      let footEl = feet[i];
       let footBbox = footEl.getBBox();
       let footToX = footBbox.x + (footBbox.width / 2);
       let footToY = footBbox.y;
       footEl.style['transform-origin'] = `${footToX}px ${footToY}px`;
-    });
+    }
   }
 }
 
