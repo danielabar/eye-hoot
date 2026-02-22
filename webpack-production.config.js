@@ -27,4 +27,6 @@ var definePlugin = new webpack.DefinePlugin({
 baseConfig.plugins.push(cleanPlugin);
 baseConfig.plugins.push(definePlugin);
 
+baseConfig.output.publicPath = './';
+
 module.exports = baseConfig;
